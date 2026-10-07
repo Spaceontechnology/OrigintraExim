@@ -1,0 +1,2149 @@
+import { Product } from '../types';
+
+export interface ProductCategory {
+  key: string;
+  label: string;
+  description: string;
+  intro: string;
+  count: number;
+}
+
+export const PRODUCT_CATEGORIES: ProductCategory[] = [
+  {
+    key: 'all',
+    label: 'All Spices',
+    description: 'Explore our complete export portfolio of 27 premium Indian spices, whole pods, sortex seeds, pure powders, and authentic masala blends.',
+    intro: 'Direct farmgate sourcing across India\'s prime agro-climatic belts with certified laboratory quality assurance.',
+    count: 27
+  },
+  {
+    key: 'whole-spices',
+    label: 'Whole Spices',
+    description: 'Sun-dried, hand-graded whole Indian spices — chilli, cardamom, pepper, cinnamon, clove, nutmeg, ginger and more — supplied to wholesale buyers, food processors and private-label brands worldwide.',
+    intro: 'Whole spices retain volatile oil, colour and pungency longer than ground material. Direct from contracted growing regions with documented grade, moisture and microbial profile on every lot.',
+    count: 9
+  },
+  {
+    key: 'ground-spices',
+    label: 'Ground Spices',
+    description: 'Sortex-cleaned, mill-controlled ground Indian spices — chilli powder, turmeric, coriander, cumin, black pepper and asafoetida — supplied to global food manufacturers and private-label retail brands.',
+    intro: 'Ground spices are milled in our facility at controlled temperature to preserve volatile oil and colour value. Mesh, bulk density, microbial spec and packaging are matched to your line.',
+    count: 6
+  },
+  {
+    key: 'seeds',
+    label: 'Seeds',
+    description: 'Indian spice seeds — cumin, coriander, mustard, fenugreek and fennel — sortex-cleaned to 99% purity for wholesale buyers and spice mill operators worldwide.',
+    intro: 'Seed spices are the backbone of the global spice trade. Supplied from the principal Indian seed-growing belts (Unjha, Gujarat and Rajasthan) with full residue compliance for destination market MRLs.',
+    count: 5
+  },
+  {
+    key: 'blends',
+    label: 'Blends & Seasonings',
+    description: 'Authentic Indian masala blends — garam masala, biryani, sambar, rasam, tandoori, curry and chaat — wholesale and private label, blended in an FSSAI-certified facility.',
+    intro: 'Formulated and packed to traditional regional recipes and buyer-specific flavor profiles, using fresh whole spices ground and balanced for optimal aromatic release.',
+    count: 7
+  }
+];
+
+export const PRODUCTS: Product[] = [
+  {
+    "id": "whole-red-chili",
+    "slug": "whole-red-chili",
+    "name": "Whole Red Chillies",
+    "botanicalName": "Capsicum annuum",
+    "scientific": "Capsicum annuum",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "Our flagship. The chilli that built us.",
+    "isFlagship": true,
+    "partUsed": "Sun-dried fruit (pod)",
+    "shortDescription": "Our flagship. The chilli that built us.",
+    "fullDescription": "Origin Exim's whole red chillies are sourced direct from contracted farmers across the Guntur, Khammam and Warangal belts — the largest contiguous chilli growing region in Asia. Each lot is sun-dried on raised platforms, hand-graded for colour and length, and held in cold storage to preserve volatile oil and natural pigment. Buyers can specify Teja S17 for high pungency, Sannam S4 for balanced colour and heat, 334 for export-grade thickness, or Byadgi for deep red colour with low heat. Stems-on, stemless, and crushed forms are available, and steam-sterilised material is supplied for buyers requiring EU and US FDA microbial compliance.",
+    "origin": "Guntur, Khammam, Warangal — Andhra Pradesh & Telangana",
+    "grade": "Teja S17 · Sannam S4 · 334 · Wonder Hot · Byadgi",
+    "availableForms": [
+      "Whole Sun-dried fruit (pod)",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Industrial oleoresin extraction",
+      "Curry pastes & sauce manufacturing",
+      "Snack & seasoning industry",
+      "Pharmaceutical capsaicin derivatives",
+      "Restaurant & retail culinary use"
+    ],
+    "loadability": "≈ 13 – 14 MT per 20ft FCL · 24 – 26 MT per 40ft FCL with stem · stemless approx 10% higher density.",
+    "image": "/assets/products/whole-red-chili.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Guntur, Khammam, Warangal — Andhra Pradesh & Telangana"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Capsicum annuum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Sun-dried fruit (pod)"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Teja S17 · Sannam S4 · 334 · Wonder Hot · Byadgi"
+      },
+      {
+        "label": "ASTA Colour",
+        "value": "60 – 165 ASTA colour units (grade dependent)"
+      },
+      {
+        "label": "Capsaicin / SHU Heat",
+        "value": "8,000 – 1,00,000 SHU (grade dependent)"
+      },
+      {
+        "label": "Container Loadability",
+        "value": "≈ 13 – 14 MT per 20ft FCL · 24 – 26 MT per 40ft FCL with stem · stemless approx 10% higher density."
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 13 – 14 MT per 20ft FCL · 24 – 26 MT per 40ft FCL with stem · stemle",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Whole Red Chillies shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Whole Red Chillies?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "green-cardamom",
+    "slug": "green-cardamom",
+    "name": "Green Cardamom",
+    "botanicalName": "Elettaria cardamomum",
+    "scientific": "Elettaria cardamomum",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "The queen of spices.",
+    "isFlagship": false,
+    "partUsed": "Dried whole pod",
+    "shortDescription": "The queen of spices.",
+    "fullDescription": "Our Indian green cardamom is harvested from the high-elevation plantations of the Western Ghats, where cool nights concentrate the essential oils that buyers in the Gulf and Europe pay a premium for. Pods are dried under controlled heat to retain the bright green husk, then graded by mechanical sieve into 6.5mm, 7mm, 7.5mm and 8mm bold counts. Origin Exim supplies hand-picked, single-origin lots with documented volatile oil content and zero pesticide residue beyond destination MRLs.",
+    "origin": "Idukki, Kerala & Western Ghats",
+    "grade": "6.5mm · 7mm · 7.5mm · 8mm bold green",
+    "availableForms": [
+      "Whole Dried whole pod",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Confectionery & bakery",
+      "Beverage & coffee blends",
+      "Ayurvedic and pharmaceutical formulations",
+      "Premium Middle-East culinary use"
+    ],
+    "loadability": "≈ 10 MT per 20ft FCL · 18 MT per 40ft FCL.",
+    "image": "/assets/products/green-cardamom.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Idukki, Kerala & Western Ghats"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Elettaria cardamomum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried whole pod"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "6.5mm · 7mm · 7.5mm · 8mm bold green"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Volatile oil ≥ 6%"
+      },
+      {
+        "label": "Container Loadability",
+        "value": "≈ 10 MT per 20ft FCL · 18 MT per 40ft FCL."
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 10 MT per 20ft FCL · 18 MT per 40ft FCL.",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Green Cardamom shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Green Cardamom?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "black-pepper",
+    "slug": "black-pepper",
+    "name": "Black Pepper",
+    "botanicalName": "Piper nigrum",
+    "scientific": "Piper nigrum",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "The original currency of trade.",
+    "isFlagship": false,
+    "partUsed": "Sun-dried mature berry",
+    "shortDescription": "The original currency of trade.",
+    "fullDescription": "Origin Exim's black pepper comes from smallholder estates along India's Malabar coast — the original home of the spice trade. Berries are vine-ripened, sun-dried on coir mats, and machine-cleaned before mechanical grading by bulk density. We supply 500 GL and 550 GL specifications, hand-picked TGSEB (Tellicherry Garbled Special Extra Bold), and steam-sterilised material for ready-to-use industrial customers.",
+    "origin": "Malabar coast, Kerala & Karnataka",
+    "grade": "MG1 · 550 GL · 500 GL · TGSEB · Garbled / Ungarbled",
+    "availableForms": [
+      "Whole Sun-dried mature berry",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Meat & seafood processing",
+      "Seasoning blends",
+      "Pharmaceutical piperine extraction",
+      "Retail grinder packs"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/black-pepper.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Malabar coast, Kerala & Karnataka"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Piper nigrum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Sun-dried mature berry"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "MG1 · 550 GL · 500 GL · TGSEB · Garbled / Ungarbled"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Piperine 4 – 6%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Black Pepper shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Black Pepper?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "cinnamon",
+    "slug": "cinnamon",
+    "name": "Cinnamon",
+    "botanicalName": "Cinnamomum verum / cassia",
+    "scientific": "Cinnamomum verum / cassia",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "Warmth, in fragile quills.",
+    "isFlagship": false,
+    "partUsed": "Dried inner bark",
+    "shortDescription": "Warmth, in fragile quills.",
+    "fullDescription": "Cinnamon is supplied as long, tightly rolled quills (true Ceylon cinnamomum verum) and as cassia broken / split for industrial buyers. Bark is harvested in the monsoon shoulder season when peeling is cleanest, then sun-cured in shaded yards. Origin Exim grades by quill length and oil content and tests every lot for coumarin where destination markets impose limits.",
+    "origin": "Kerala & sourced Cassia from Indonesia for blending lots",
+    "grade": "Quills · Broken · Split · Powder",
+    "availableForms": [
+      "Whole Dried inner bark",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Bakery & confectionery",
+      "Beverage syrups & infusions",
+      "Nutraceutical capsules",
+      "Mulled wine and seasonal blends"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/cinnamon.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Kerala & sourced Cassia from Indonesia for blending lots"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Cinnamomum verum / cassia"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried inner bark"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Quills · Broken · Split · Powder"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Volatile oil 1.5 – 3%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Cinnamon shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Cinnamon?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "star-anise",
+    "slug": "star-anise",
+    "name": "Star Anise",
+    "botanicalName": "Illicium verum",
+    "scientific": "Illicium verum",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "Eight pointed perfection.",
+    "isFlagship": false,
+    "partUsed": "Dried fruit (whole star)",
+    "shortDescription": "Eight pointed perfection.",
+    "fullDescription": "Origin Exim supplies cleaned, sorted star anise with full eight-point stars, low broken percentage and verified anethole content. Lots are sieved, manually picked for foreign matter and tested for shikimic acid yield where requested by pharmaceutical buyers.",
+    "origin": "Sourced & cleaned in India for export",
+    "grade": "Whole star · Broken · Powder",
+    "availableForms": [
+      "Whole Dried fruit (whole star)",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Five-spice & Asian seasoning blends",
+      "Liqueur & beverage flavouring",
+      "Pharmaceutical (shikimic acid precursor)"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/star-anise.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Sourced & cleaned in India for export"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Illicium verum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried fruit (whole star)"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Whole star · Broken · Powder"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Anethole ≥ 85% in essential oil fraction"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Star Anise shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Star Anise?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "clove",
+    "slug": "clove",
+    "name": "Cloves",
+    "botanicalName": "Syzygium aromaticum",
+    "scientific": "Syzygium aromaticum",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "Nails of fragrance.",
+    "isFlagship": false,
+    "partUsed": "Dried unopened flower bud",
+    "shortDescription": "Nails of fragrance.",
+    "fullDescription": "Cloves are harvested by hand at the unopened bud stage, sun-dried until they turn the characteristic deep brown, then hand-sorted to remove khoker (head-less) and stem fractions. Origin Exim supplies premium hand-picked stemless lots and bulk machine-cleaned grades with documented eugenol content for pharmaceutical and food-industry buyers.",
+    "origin": "Nilgiris & Kerala",
+    "grade": "Hand-picked · Machine-cleaned · Stemless · With stem",
+    "availableForms": [
+      "Whole Dried unopened flower bud",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Meat curing & processed food",
+      "Dental & pharmaceutical formulations",
+      "Tobacco and incense industries",
+      "Premium culinary use"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/clove.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Nilgiris & Kerala"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Syzygium aromaticum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried unopened flower bud"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Hand-picked · Machine-cleaned · Stemless · With stem"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Eugenol ≥ 80% in volatile oil"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Cloves shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Cloves?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "nutmeg",
+    "slug": "nutmeg",
+    "name": "Nutmeg and Mace",
+    "botanicalName": "Myristica fragrans",
+    "scientific": "Myristica fragrans",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "A seed and its scarlet veil.",
+    "isFlagship": false,
+    "partUsed": "Dried seed kernel (nutmeg) and aril (mace)",
+    "shortDescription": "A seed and its scarlet veil.",
+    "fullDescription": "Origin Exim supplies sound shelled nutmeg (free of insect damage), BWP (broken, wormy and punctured) industrial grade, and bright red whole mace blades and broken. Aflatoxin testing is mandatory on every lot before despatch.",
+    "origin": "Kerala & Karnataka",
+    "grade": "Shelled · In-shell · Sound · BWP · Mace blade & broken",
+    "availableForms": [
+      "Whole Dried seed kernel (nutmeg) and aril (mace)",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Bakery & dairy",
+      "Nutraceutical and Ayurvedic preparations",
+      "Sausage and ready-meal seasoning"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/nutmeg.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Kerala & Karnataka"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Myristica fragrans"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried seed kernel (nutmeg) and aril (mace)"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Shelled · In-shell · Sound · BWP · Mace blade & broken"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Volatile oil 6 – 16%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Nutmeg and Mace shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Nutmeg and Mace?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "dry-ginger",
+    "slug": "dry-ginger",
+    "name": "Dry Ginger",
+    "botanicalName": "Zingiber officinale",
+    "scientific": "Zingiber officinale",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "Heat without flame.",
+    "isFlagship": false,
+    "partUsed": "Dried rhizome",
+    "shortDescription": "Heat without flame.",
+    "fullDescription": "Dry ginger is sourced from the high-pungency Cochin and Calicut belts of Kerala and the increasingly important North-East Indian crop. Rhizomes are washed, peeled, sun-dried and sortex-cleaned. Origin Exim supplies whole, split, and milled grades, and offers sulphur-free unbleached material for organic and clean-label buyers.",
+    "origin": "Kerala, Karnataka & North-East India",
+    "grade": "Cochin sortex · Calicut · Bleached · Unbleached · Whole · Split",
+    "availableForms": [
+      "Whole Dried rhizome",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Beverage and herbal tea",
+      "Confectionery",
+      "Nutraceutical and Ayurvedic powders",
+      "Bakery seasoning"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/dry-ginger.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Kerala, Karnataka & North-East India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Zingiber officinale"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried rhizome"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Cochin sortex · Calicut · Bleached · Unbleached · Whole · Split"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Gingerol & shogaol bioactives, volatile oil 1.5 – 3%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Dry Ginger shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Dry Ginger?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "bay-leaf",
+    "slug": "bay-leaf",
+    "name": "Bay Leaf (Tej Patta)",
+    "botanicalName": "Cinnamomum tamala",
+    "scientific": "Cinnamomum tamala",
+    "category": "Whole Spices",
+    "categoryKey": "whole-spices",
+    "tagline": "The quiet aromatic.",
+    "isFlagship": false,
+    "partUsed": "Dried leaf",
+    "shortDescription": "The quiet aromatic.",
+    "fullDescription": "Indian bay leaf — Cinnamomum tamala — is botanically and aromatically distinct from the Mediterranean Laurus nobilis. Origin Exim supplies whole hand-picked leaves with intact three-vein structure, plus broken and powdered material for industrial buyers.",
+    "origin": "Uttarakhand & North-East India foothills",
+    "grade": "Hand-picked whole · Semi-broken · Powder",
+    "availableForms": [
+      "Whole Dried leaf",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Curry and biryani seasoning",
+      "Soup and broth manufacturing",
+      "Herbal teas"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/bay-leaf.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Uttarakhand & North-East India foothills"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Cinnamomum tamala"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried leaf"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Hand-picked whole · Semi-broken · Powder"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Eugenol-rich volatile oil"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Bay Leaf (Tej Patta) shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Bay Leaf (Tej Patta)?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "red-chili-powder",
+    "slug": "red-chili-powder",
+    "name": "Red Chilli Powder",
+    "botanicalName": "Capsicum annuum",
+    "scientific": "Capsicum annuum",
+    "category": "Ground Spices",
+    "categoryKey": "ground-spices",
+    "tagline": "Heat, calibrated.",
+    "isFlagship": false,
+    "partUsed": "Ground dried chilli",
+    "shortDescription": "Heat, calibrated.",
+    "fullDescription": "Red chilli powder is milled to buyer-specified mesh — typically 40, 60 or 80 mesh — from sortex-cleaned, stemless chillies. Origin Exim offers Byadgi-based blends for deep colour without aggressive heat, Teja for high pungency, and custom ASTA / SHU blends matched to your finished-product target. Steam-sterilised material is available for buyers shipping into the EU and US.",
+    "origin": "Andhra Pradesh & Telangana",
+    "grade": "Stemless · Stemmed · Byadgi (high colour) · Teja (high heat) · Sannam blend",
+    "availableForms": [
+      "Whole Ground dried chilli",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Curry powder and masala manufacturing",
+      "Snack seasoning",
+      "Industrial sauce and paste",
+      "Restaurant supply"
+    ],
+    "loadability": "≈ 12 MT per 20ft FCL in 25 kg PP bags · 22 MT per 40ft FCL.",
+    "image": "/assets/products/red-chili-powder.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Andhra Pradesh & Telangana"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Capsicum annuum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground dried chilli"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Stemless · Stemmed · Byadgi (high colour) · Teja (high heat) · Sannam blend"
+      },
+      {
+        "label": "ASTA Colour",
+        "value": "40 – 220 ASTA (specification dependent)"
+      },
+      {
+        "label": "Capsaicin / SHU Heat",
+        "value": "5,000 – 80,000 SHU (specification dependent)"
+      },
+      {
+        "label": "Container Loadability",
+        "value": "≈ 12 MT per 20ft FCL in 25 kg PP bags · 22 MT per 40ft FCL."
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12 MT per 20ft FCL in 25 kg PP bags · 22 MT per 40ft FCL.",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Red Chilli Powder shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Red Chilli Powder?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "turmeric",
+    "slug": "turmeric",
+    "name": "Turmeric",
+    "botanicalName": "Curcuma longa",
+    "scientific": "Curcuma longa",
+    "category": "Ground Spices",
+    "categoryKey": "ground-spices",
+    "tagline": "Liquid gold from the southern soil.",
+    "isFlagship": false,
+    "partUsed": "Boiled, dried, polished and ground rhizome",
+    "shortDescription": "Liquid gold from the southern soil.",
+    "fullDescription": "Origin Exim supplies turmeric powder and finger from the four principal Indian belts — Erode and Salem in Tamil Nadu, Sangli in Maharashtra and Nizamabad in Telangana. Each origin has its own curcumin range and colour profile. We supply standard 2% curcumin culinary grade and high-curcumin selection up to 5% for nutraceutical buyers, with documented heavy-metal and lead-chromate testing on every lot.",
+    "origin": "Erode, Salem (Tamil Nadu), Sangli (Maharashtra), Nizamabad (Telangana)",
+    "grade": "Erode finger · Salem finger · Rajapuri · Nizamabad bulb",
+    "availableForms": [
+      "Whole Boiled, dried, polished and ground rhizome",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Curry powder and masala",
+      "Nutraceutical curcumin extraction",
+      "Cosmetic formulations",
+      "Natural food colouring"
+    ],
+    "loadability": "≈ 14 MT per 20ft FCL · 25 MT per 40ft FCL.",
+    "image": "/assets/products/turmeric.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Erode, Salem (Tamil Nadu), Sangli (Maharashtra), Nizamabad (Telangana)"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Curcuma longa"
+      },
+      {
+        "label": "Part Used",
+        "value": "Boiled, dried, polished and ground rhizome"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Erode finger · Salem finger · Rajapuri · Nizamabad bulb"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Curcumin 2 – 5% (variety dependent)"
+      },
+      {
+        "label": "Container Loadability",
+        "value": "≈ 14 MT per 20ft FCL · 25 MT per 40ft FCL."
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 14 MT per 20ft FCL · 25 MT per 40ft FCL.",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Turmeric shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Turmeric?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "asafoetida",
+    "slug": "asafoetida",
+    "name": "Asafoetida (Hing)",
+    "botanicalName": "Ferula assa-foetida",
+    "scientific": "Ferula assa-foetida",
+    "category": "Ground Spices",
+    "categoryKey": "ground-spices",
+    "tagline": "Pungent gold of the kitchen.",
+    "isFlagship": false,
+    "partUsed": "Dried oleo-gum-resin, compounded with edible carrier",
+    "shortDescription": "Pungent gold of the kitchen.",
+    "fullDescription": "Asafoetida is compounded in our facility with food-grade gum arabic and rice flour to deliver the standard yellow and white retail grades, and supplied as raw lump resin for buyers blending in their own facilities. Lots are tested for starch content, ash, and microbial load.",
+    "origin": "Resin sourced from Afghanistan & Iran, compounded in India",
+    "grade": "Compounded yellow · Compounded white · Pure resin lump",
+    "availableForms": [
+      "Whole Dried oleo-gum-resin, compounded with edible carrier",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Vegetarian and Jain cooking",
+      "Lentil and pulse-based food manufacturing",
+      "Ayurvedic digestive formulations"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/asafoetida.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Resin sourced from Afghanistan & Iran, compounded in India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Ferula assa-foetida"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried oleo-gum-resin, compounded with edible carrier"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Compounded yellow · Compounded white · Pure resin lump"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Asafoetida (Hing) shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Asafoetida (Hing)?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "coriander-powder",
+    "slug": "coriander-powder",
+    "name": "Coriander Powder",
+    "botanicalName": "Coriandrum sativum",
+    "scientific": "Coriandrum sativum",
+    "category": "Ground Spices",
+    "categoryKey": "ground-spices",
+    "tagline": "Citrus, ground bright.",
+    "isFlagship": false,
+    "partUsed": "Ground dried fruit",
+    "shortDescription": "Citrus, ground bright.",
+    "fullDescription": "Coriander powder is milled from sortex-cleaned Eagle and Parrot grade seeds, with mesh and bulk density adjusted to buyer specification. Origin Exim offers low-microbial steam-treated material for industrial customers in regulated markets.",
+    "origin": "Rajasthan, Madhya Pradesh & Gujarat",
+    "grade": "Eagle · Single Parrot · Double Parrot · Scooter",
+    "availableForms": [
+      "Whole Ground dried fruit",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Curry powder base",
+      "Masala manufacturing",
+      "Pickle and chutney industry"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/coriander-powder.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Rajasthan, Madhya Pradesh & Gujarat"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Coriandrum sativum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground dried fruit"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Eagle · Single Parrot · Double Parrot · Scooter"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Coriander Powder shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Coriander Powder?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "cumin-powder",
+    "slug": "cumin-powder",
+    "name": "Cumin Powder",
+    "botanicalName": "Cuminum cyminum",
+    "scientific": "Cuminum cyminum",
+    "category": "Ground Spices",
+    "categoryKey": "ground-spices",
+    "tagline": "Warmth in a finer form.",
+    "isFlagship": false,
+    "partUsed": "Ground dried fruit",
+    "shortDescription": "Warmth in a finer form.",
+    "fullDescription": "Cumin powder is milled from Singapore- and Europe-quality cleaned seed at controlled temperature to preserve cuminaldehyde. Origin Exim supplies steam-sterilised material with verified Salmonella-negative status for EU buyers.",
+    "origin": "Unjha, Gujarat & Rajasthan",
+    "grade": "Singapore quality · Europe quality · 99% machine cleaned",
+    "availableForms": [
+      "Whole Ground dried fruit",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Curry powder and seasoning blends",
+      "Snack and ready-meal industry",
+      "Ethnic restaurant supply"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/cumin-powder.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Unjha, Gujarat & Rajasthan"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Cuminum cyminum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground dried fruit"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Singapore quality · Europe quality · 99% machine cleaned"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Volatile oil 2.5 – 4.5%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Cumin Powder shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Cumin Powder?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "black-pepper-powder",
+    "slug": "black-pepper-powder",
+    "name": "Black Pepper Powder",
+    "botanicalName": "Piper nigrum",
+    "scientific": "Piper nigrum",
+    "category": "Ground Spices",
+    "categoryKey": "ground-spices",
+    "tagline": "Sharper, finer, faster.",
+    "isFlagship": false,
+    "partUsed": "Ground dried mature berry",
+    "shortDescription": "Sharper, finer, faster.",
+    "fullDescription": "Origin Exim mills black pepper at controlled cryogenic and ambient temperatures to preserve piperine and oleoresin. Mesh sizes from coarse to fine table grind are supplied with consistent bulk density.",
+    "origin": "Malabar coast, Kerala",
+    "grade": "Coarse · Fine · Table grind",
+    "availableForms": [
+      "Whole Ground dried mature berry",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Seasoning blends",
+      "Restaurant table service",
+      "Meat and seafood processing"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/black-pepper-powder.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Malabar coast, Kerala"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Piper nigrum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground dried mature berry"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Coarse · Fine · Table grind"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Piperine ≥ 4%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Black Pepper Powder shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Black Pepper Powder?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "cumin-seeds",
+    "slug": "cumin-seeds",
+    "name": "Cumin Seeds",
+    "botanicalName": "Cuminum cyminum",
+    "scientific": "Cuminum cyminum",
+    "category": "Seeds",
+    "categoryKey": "seeds",
+    "tagline": "Earth, made aromatic.",
+    "isFlagship": false,
+    "partUsed": "Dried fruit",
+    "shortDescription": "Earth, made aromatic.",
+    "fullDescription": "Origin Exim sources cumin from the Unjha mandi — the world's largest cumin trading hub — and supplies machine-cleaned, sortex-cleaned and Europe-quality material with documented purity and pesticide residue compliance for EU MRL.",
+    "origin": "Unjha, Gujarat & Rajasthan",
+    "grade": "Singapore quality · Europe quality · 99% machine cleaned · Sortex cleaned",
+    "availableForms": [
+      "Whole Dried fruit",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Whole-seed seasoning",
+      "Spice mill industry",
+      "Ayurvedic and herbal preparations"
+    ],
+    "loadability": "≈ 15 MT per 20ft FCL · 26 MT per 40ft FCL.",
+    "image": "/assets/products/cumin-seeds.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Unjha, Gujarat & Rajasthan"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Cuminum cyminum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried fruit"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Singapore quality · Europe quality · 99% machine cleaned · Sortex cleaned"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Volatile oil 2.5 – 4.5%"
+      },
+      {
+        "label": "Container Loadability",
+        "value": "≈ 15 MT per 20ft FCL · 26 MT per 40ft FCL."
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 15 MT per 20ft FCL · 26 MT per 40ft FCL.",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Cumin Seeds shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Cumin Seeds?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "coriander-seeds",
+    "slug": "coriander-seeds",
+    "name": "Coriander Seeds",
+    "botanicalName": "Coriandrum sativum",
+    "scientific": "Coriandrum sativum",
+    "category": "Seeds",
+    "categoryKey": "seeds",
+    "tagline": "Citrus held in a husk.",
+    "isFlagship": false,
+    "partUsed": "Dried fruit",
+    "shortDescription": "Citrus held in a husk.",
+    "fullDescription": "Coriander seed is supplied across all four Indian commercial grades — Eagle, Single and Double Parrot, and Scooter — with split material available for buyers preparing chutney and pickling masalas.",
+    "origin": "Rajasthan, Madhya Pradesh & Gujarat",
+    "grade": "Eagle · Single Parrot · Double Parrot · Scooter · Split",
+    "availableForms": [
+      "Whole Dried fruit",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Pickling industry",
+      "Spice mill input",
+      "Curry powder manufacturing",
+      "Brewing and distilling"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/coriander-seeds.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Rajasthan, Madhya Pradesh & Gujarat"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Coriandrum sativum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried fruit"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Eagle · Single Parrot · Double Parrot · Scooter · Split"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Coriander Seeds shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Coriander Seeds?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "mustard-seeds",
+    "slug": "mustard-seeds",
+    "name": "Mustard Seeds",
+    "botanicalName": "Brassica juncea",
+    "scientific": "Brassica juncea",
+    "category": "Seeds",
+    "categoryKey": "seeds",
+    "tagline": "Tiny spheres of fire.",
+    "isFlagship": false,
+    "partUsed": "Dried seed",
+    "shortDescription": "Tiny spheres of fire.",
+    "fullDescription": "Origin Exim supplies yellow, brown and black mustard seed sortex-cleaned to 99.95% purity, with documented allyl isothiocyanate content for industrial pickle and mayonnaise buyers.",
+    "origin": "Rajasthan & Uttar Pradesh",
+    "grade": "Yellow · Brown · Black · Sortex cleaned",
+    "availableForms": [
+      "Whole Dried seed",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Pickling and condiment manufacturing",
+      "Oil pressing",
+      "South Indian tempering",
+      "Mayonnaise and sauce industry"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/mustard-seeds.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Rajasthan & Uttar Pradesh"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Brassica juncea"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried seed"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Yellow · Brown · Black · Sortex cleaned"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Mustard Seeds shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Mustard Seeds?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "fenugreek-seeds",
+    "slug": "fenugreek-seeds",
+    "name": "Fenugreek Seeds",
+    "botanicalName": "Trigonella foenum-graecum",
+    "scientific": "Trigonella foenum-graecum",
+    "category": "Seeds",
+    "categoryKey": "seeds",
+    "tagline": "Bitter brilliance.",
+    "isFlagship": false,
+    "partUsed": "Dried seed",
+    "shortDescription": "Bitter brilliance.",
+    "fullDescription": "Fenugreek seed is sortex-cleaned and supplied with verified saponin and fibre content for nutraceutical buyers formulating diabetic-care and lactation-support products.",
+    "origin": "Rajasthan & Madhya Pradesh",
+    "grade": "Sortex cleaned · Machine cleaned · Powdered",
+    "availableForms": [
+      "Whole Dried seed",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Curry powder base",
+      "Diabetic-care nutraceuticals",
+      "Cattle and animal-feed industry",
+      "Sprouting and culinary use"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/fenugreek-seeds.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Rajasthan & Madhya Pradesh"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Trigonella foenum-graecum"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried seed"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Sortex cleaned · Machine cleaned · Powdered"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Fenugreek Seeds shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Fenugreek Seeds?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "fennel",
+    "slug": "fennel",
+    "name": "Fennel Seeds",
+    "botanicalName": "Foeniculum vulgare",
+    "scientific": "Foeniculum vulgare",
+    "category": "Seeds",
+    "categoryKey": "seeds",
+    "tagline": "Sweet, anise, cool.",
+    "isFlagship": false,
+    "partUsed": "Dried fruit",
+    "shortDescription": "Sweet, anise, cool.",
+    "fullDescription": "Fennel is supplied in Europe and Singapore commercial qualities and as the small bold Lucknowi premium grade. Material is sortex-cleaned and tested for stem and immature seed percentage.",
+    "origin": "Gujarat (Unjha) & Rajasthan",
+    "grade": "Europe quality · Singapore quality · Lucknowi (small bold) · Sortex cleaned",
+    "availableForms": [
+      "Whole Dried fruit",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Bakery and confectionery",
+      "Mukhwas and digestive after-meal mixes",
+      "Herbal tea blending",
+      "Liqueur and gin botanicals"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/fennel.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Gujarat (Unjha) & Rajasthan"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Foeniculum vulgare"
+      },
+      {
+        "label": "Part Used",
+        "value": "Dried fruit"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Europe quality · Singapore quality · Lucknowi (small bold) · Sortex cleaned"
+      },
+      {
+        "label": "Volatile Oil (VO)",
+        "value": "Anethole-rich volatile oil 2 – 4%"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Fennel Seeds shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Fennel Seeds?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "garam-masala",
+    "slug": "garam-masala",
+    "name": "Garam Masala",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "The warm finishing touch.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice blend",
+    "shortDescription": "The warm finishing touch.",
+    "fullDescription": "Garam masala is blended from cumin, coriander, black pepper, cardamom, cinnamon, clove, nutmeg and bay leaf — proportions tuned to buyer recipe. Origin Exim manages dry-roast, mill, blend and pack in a single facility under documented hygiene controls.",
+    "origin": "Blended in India to buyer recipe",
+    "grade": "Standard recipe · Custom private label · Salt-free",
+    "availableForms": [
+      "Whole Ground multi-spice blend",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Indian restaurant supply",
+      "Ready-meal manufacturing",
+      "Retail private label"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/garam-masala.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India to buyer recipe"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice blend"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Standard recipe · Custom private label · Salt-free"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Garam Masala shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Garam Masala?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "sambar-masala",
+    "slug": "sambar-masala",
+    "name": "Sambar Masala",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "South India in a spoon.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice blend with roasted lentils",
+    "shortDescription": "South India in a spoon.",
+    "fullDescription": "Sambar masala combines roasted toor dal, chana dal, coriander seed, fenugreek, cumin, mustard, dry red chilli and curry leaf, milled to a fine consistency. Origin Exim formulates to regional recipe — Tamil, Karnataka or Andhra style — under buyer instruction.",
+    "origin": "Blended in India",
+    "grade": "Standard · Custom recipe · No-onion-no-garlic",
+    "availableForms": [
+      "Whole Ground multi-spice blend with roasted lentils",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "South Indian restaurant supply",
+      "Ethnic ready-meal manufacturing",
+      "Retail private label"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/sambar-masala.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice blend with roasted lentils"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Standard · Custom recipe · No-onion-no-garlic"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Sambar Masala shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Sambar Masala?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "rasam-powder",
+    "slug": "rasam-powder",
+    "name": "Rasam Powder",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "Pepper, tamarind, fire.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice blend",
+    "shortDescription": "Pepper, tamarind, fire.",
+    "fullDescription": "Rasam powder is dominated by black pepper, cumin and coriander, balanced with toor dal, mustard, dry red chilli and curry leaf. Origin Exim mills at controlled temperature to retain pepper volatiles.",
+    "origin": "Blended in India",
+    "grade": "Standard · Custom · Pepper-forward",
+    "availableForms": [
+      "Whole Ground multi-spice blend",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "South Indian restaurant supply",
+      "Soup and broth manufacturing",
+      "Retail private label"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/rasam-powder.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice blend"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Standard · Custom · Pepper-forward"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Rasam Powder shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Rasam Powder?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "biryani-masala",
+    "slug": "biryani-masala",
+    "name": "Biryani Masala",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "Layered, aromatic, regal.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice blend",
+    "shortDescription": "Layered, aromatic, regal.",
+    "fullDescription": "Biryani masala is built around saffron-aromatic whole spices — green cardamom, black cardamom, mace, nutmeg, star anise, clove, cinnamon and bay leaf — milled and blended to regional recipe. Origin Exim offers Hyderabadi (chilli-forward), Lucknowi (sweet-aromatic) and Kolkata (with kewra) profiles.",
+    "origin": "Blended in India",
+    "grade": "Hyderabadi · Lucknowi · Kolkata · Custom",
+    "availableForms": [
+      "Whole Ground multi-spice blend",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Restaurant and QSR supply",
+      "Frozen biryani manufacturing",
+      "Retail private label"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/biryani-masala.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice blend"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Hyderabadi · Lucknowi · Kolkata · Custom"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Biryani Masala shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Biryani Masala?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "tandoori-masala",
+    "slug": "tandoori-masala",
+    "name": "Tandoori Masala",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "Smoke, spice, colour.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice blend",
+    "shortDescription": "Smoke, spice, colour.",
+    "fullDescription": "Tandoori masala combines red chilli, coriander, cumin, ginger, garlic, fenugreek leaf, garam masala spices and natural beetroot or paprika colour. Origin Exim supplies Sudan-dye-free, natural-colour formulations compliant with EU regulations.",
+    "origin": "Blended in India",
+    "grade": "With natural colour · No added colour · Custom heat",
+    "availableForms": [
+      "Whole Ground multi-spice blend",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Restaurant marinade base",
+      "Ready-meal manufacturing",
+      "Retail grill seasoning"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/tandoori-masala.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice blend"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "With natural colour · No added colour · Custom heat"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Tandoori Masala shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Tandoori Masala?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "curry-powder",
+    "slug": "curry-powder",
+    "name": "Curry Powder",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "The world's introduction to India.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice blend",
+    "shortDescription": "The world's introduction to India.",
+    "fullDescription": "Curry powder is the original international introduction to Indian flavour. Origin Exim formulates Mild, Medium, Hot and Madras profiles — coriander- and turmeric-led, with controlled chilli and a stable colour for finished-product consistency in retail packs.",
+    "origin": "Blended in India to international recipe",
+    "grade": "Mild · Medium · Hot · Madras · Custom",
+    "availableForms": [
+      "Whole Ground multi-spice blend",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Western retail private label",
+      "Catering and food service",
+      "Soup and sauce manufacturing"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/curry-powder.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India to international recipe"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice blend"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Mild · Medium · Hot · Madras · Custom"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Curry Powder shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Curry Powder?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  },
+  {
+    "id": "chaat-masala",
+    "slug": "chaat-masala",
+    "name": "Chaat Masala",
+    "botanicalName": "Spice blend",
+    "scientific": "Spice blend",
+    "category": "Blends & Seasonings",
+    "categoryKey": "blends",
+    "tagline": "Tangy, salty, electric.",
+    "isFlagship": false,
+    "partUsed": "Ground multi-spice & salt blend",
+    "shortDescription": "Tangy, salty, electric.",
+    "fullDescription": "Chaat masala combines black salt (kala namak), amchoor (dry mango), cumin, black pepper, chilli, ginger, coriander and asafoetida. Origin Exim offers standard and low-sodium formulations, with documented iron and sulphur values from kala namak.",
+    "origin": "Blended in India",
+    "grade": "Standard · Low-sodium · Custom",
+    "availableForms": [
+      "Whole Ground multi-spice & salt blend",
+      "Ground Powder"
+    ],
+    "packagingOptions": [
+      "25kg / 50kg Multi-Wall Kraft Paper Sacks with PE Inner Liner",
+      "High-Density Polypropylene (PP) Woven Export Sacks",
+      "Custom Private Label Foodservice Pouches Available"
+    ],
+    "applications": [
+      "Snack seasoning industry",
+      "Restaurant table service",
+      "Retail private label"
+    ],
+    "loadability": "Approx. 12-14 MT per 20ft FCL / 24-26 MT per 40ft FCL",
+    "image": "/assets/products/chaat-masala.jpg",
+    "specifications": [
+      {
+        "label": "Origin",
+        "value": "Blended in India"
+      },
+      {
+        "label": "Botanical Name",
+        "value": "Spice blend"
+      },
+      {
+        "label": "Part Used",
+        "value": "Ground multi-spice & salt blend"
+      },
+      {
+        "label": "Grade / Varieties",
+        "value": "Standard · Low-sodium · Custom"
+      }
+    ],
+    "qualityProcess": [
+      "Multi-stage magnetic separation and pneumatic air-sifting to remove field extraneous matter",
+      "Optical color Sortex sorting for uniform seed/pod size, color, and density grading",
+      "Certified laboratory testing for pesticide MRLs, microbial limits, and heavy metals",
+      "Batch-wise moisture-controlled sealed packaging preventing mold and volatile oil oxidation"
+    ],
+    "exportInfo": {
+      "minimumOrderQuantity": "1 x 20ft FCL (Mixed container options available for LCL/trial lots)",
+      "packagingStandard": "Food-Grade 25kg / 50kg export seaworthy seaworthy bags with inner liner",
+      "containerCapacity": "≈ 12-14 MT (20ft FCL) / 24-26 MT (40ft FCL)",
+      "sampleAvailability": "Complimentary commercial samples dispatched via DHL/FedEx upon request",
+      "leadTime": "10 to 14 business days from contract confirmation to Indian port loading",
+      "incoterms": "FOB (Mundra, Nhava Sheva, Cochin), CFR, CIF Destination Port"
+    },
+    "faqs": [
+      {
+        "question": "What quality certifications are supplied with Chaat Masala shipments?",
+        "answer": "Every commercial consignment is accompanied by Phytosanitary Certificate, Certificate of Origin, Commercial Invoice, Packing List, and certified third-party laboratory analysis (SGS / Eurofins upon buyer request) verifying pesticide MRLs and physical purity."
+      },
+      {
+        "question": "Can you customize the packaging and mesh size for Chaat Masala?",
+        "answer": "Yes, we provide customizable packaging from 25kg multi-wall paper bags with barrier liners to bulk jumbo bags and private label retail pouch packaging. For ground products, mesh size and grind specification can be calibrated precisely to your processing line."
+      }
+    ]
+  }
+];

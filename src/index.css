@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0070E0;
+  --primary-dark: #0058B6;
+  --primary-light: #38BDF8;
+  --navy: #0A1C3E;
+  --navy-dark: #050E20;
+  --foreground: #0F172A;
+  --ink: #0F172A;
+  --ink-soft: #64748B;
+  --surface: #FAFAFA;
+  --surface-2: #F1F5F9;
+  --line: #E2E8F0;
+  --border: #E2E8F0;
+  --color-primary: #0070E0;
+}
+
+@layer base {
+  html {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    color: var(--foreground);
+    background-color: #FFFFFF;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0070E0;
+}
+
+/* Luxury Editorial Container */
+.container-x {
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .container-x {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+/* Backward-compatible alias */
+.origintra-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .origintra-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .origintra-container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+/* Signature Architectural Eyebrow (Lowercase with Maritime Blue Line) */
+.eyebrow {
+  text-transform: lowercase;
+  letter-spacing: -0.005em;
+  color: var(--primary);
+  align-items: center;
+  gap: 0.875rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  display: inline-flex;
+}
+.eyebrow::before {
+  content: "";
+  background: var(--primary);
+  width: 2.25rem;
+  height: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Signature Brand Dot Accent */
+.brand-dot {
+  color: var(--primary);
+}
+
+/* High-Fashion Swiss Fluid Typography Scale */
+.display-xl {
+  letter-spacing: -0.045em;
+  font-size: clamp(3.25rem, 8.5vw, 8rem);
+  font-weight: 500;
+  line-height: 0.92;
+}
+
+.display-lg {
+  letter-spacing: -0.04em;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.display-md {
+  letter-spacing: -0.035em;
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Luxury Editorial Pill Buttons */
+.btn-pill {
+  border-radius: 9999px;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-pill-dark {
+  color: #FFFFFF;
+  background: #0A1C3E;
+  border: 1px solid transparent;
+}
+.btn-pill-dark:hover {
+  background: #0070E0;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-pill-light {
+  color: #0F172A;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+}
+.btn-pill-light:hover {
+  background: #0070E0;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-pill-outline {
+  color: #FFFFFF;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.btn-pill-outline:hover {
+  color: #0F172A;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.btn-pill-ghost {
+  color: #0F172A;
+  background: transparent;
+  border: 1px solid rgba(15, 23, 42, 0.25);
+}
+.btn-pill-ghost:hover {
+  border-color: #0070E0;
+  color: #0070E0;
+  background: #F8FAFC;
+}
+
+/* Minimalist Underline Form Inputs */
+.input-minimal {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #E2E8F0;
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #0F172A;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-minimal:focus {
+  border-color: #0070E0;
+}
+.input-minimal::placeholder {
+  color: rgba(100, 116, 139, 0.5);
+}
+
+/* Sleek Grid Divider Line Utility */
+.bg-line {
+  background-color: #E2E8F0;
+}
+.border-line {
+  border-color: #E2E8F0;
+}
+.divide-line > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2E8F0;
+}
+
+/* Minimalist Surface Tokens */
+.bg-surface-1 {
+  background-color: #FAFAFA;
+}
+.bg-surface-2 {
+  background-color: #F1F5F9;
+}
+.text-ink-soft {
+  color: #64748B;
+}
+
+/* Infinite Marquee Animation for Country Flags */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite reverse;
+  will-change: transform;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

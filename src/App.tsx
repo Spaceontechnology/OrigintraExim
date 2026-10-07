@@ -1,0 +1,414 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { Navbar } from './components/Navbar';
+import { Footer } from './components/Footer';
+import { QuoteModal } from './components/QuoteModal';
+import { LegalModal } from './components/LegalModal';
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { ProductsPage } from './pages/ProductsPage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
+import { GlobalReachPage } from './pages/GlobalReachPage';
+import { QualityPage } from './pages/QualityPage';
+import { BlogPage } from './pages/BlogPage';
+import { ContactPage } from './pages/ContactPage';
+import { MeetingPage } from './pages/MeetingPage';
+import { AdminPage } from './pages/AdminPage';
+import { PRODUCTS } from './data/products';
+import { BLOG_POSTS } from './data/blog';
+import { Product, BlogPost } from './types';
+import { COMPANY_CONFIG } from './data/company';
+import { AdminStorage } from './services/adminStorage';
+import { ROUTES, getHref, parseCurrentRoute, ParsedRoute } from './utils/routes';
+import { updatePageSeo, getProductSeo, getBlogPostSeo } from './utils/seo';
+
+export const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<string>('home');
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [blogArticleSlug, setBlogArticleSlug] = useState<string | null>(null);
+  const [quoteModalOpen, setQuoteModalOpen] = useState<boolean>(false);
+  const [prefilledProduct, setPrefilledProduct] = useState<string>('Red Chilli');
+  const [legalModalOpen, setLegalModalOpen] = useState<boolean>(false);
+  const [activeLegalType, setActiveLegalType] = useState<'privacy' | 'terms' | 'shipping' | 'cookies'>('privacy');
+
+  const applyRouteSeo = useCallback((route: ParsedRoute, product?: Product | null, post?: BlogPost | null) => {
+    switch (route.page) {
+      case 'home':
+        updatePageSeo({
+          title: 'Origintra Exim | Premium Indian Spice Exporter & Agricultural Trading',
+          description: 'Origintra Exim is a premier Indian spices exporter and agricultural trading company. Connecting trusted Indian sourcing with global markets, exporting quality dry red chilli, turmeric, coriander, cumin, and moringa powder to international buyers worldwide.',
+          canonicalPath: '/',
+          ogType: 'website'
+        });
+        break;
+      case 'about':
+        updatePageSeo({
+          title: 'About Us | Origintra Exim - Leading Indian Spice Exporter & Sourcing Partner',
+          description: "Discover Origintra Exim's export journey, founding mission, executive leadership, and deep farmgate sourcing networks across India's agricultural heartlands.",
+          canonicalPath: '/about',
+          ogType: 'website'
+        });
+        break;
+      case 'products':
+        updatePageSeo({
+          title: 'Export Quality Indian Spices Catalog | Origintra Exim',
+          description: 'Browse our full export portfolio of 27+ premium Indian spices: whole chillies, turmeric fingers, green cardamom, black pepper, sortex seeds, and authentic curry blends.',
+          canonicalPath: '/products',
+          ogType: 'website'
+        });
+        break;
+      case 'product-detail':
+        if (product) {
+          updatePageSeo(getProductSeo(product));
+        }
+        break;
+      case 'global-reach':
+        updatePageSeo({
+          title: 'Global Export Reach & Maritime Shipping Logistics | Origintra Exim',
+          description: 'Delivering container-load Indian agricultural commodities to over 24+ destination countries across GCC, North America, Europe, and Southeast Asia.',
+          canonicalPath: '/global-reach',
+          ogType: 'website'
+        });
+        break;
+      case 'quality':
+        updatePageSeo({
+          title: 'Quality Assurance, Testing & Spice Board Compliance | Origintra Exim',
+          description: 'Export-grade compliance with Spices Board of India, FSSAI, APEDA, and ISO. Certified laboratory testing for moisture, aflatoxins, volatile oils, and pesticide MRLs.',
+          canonicalPath: '/quality',
+          ogType: 'website'
+        });
+        break;
+      case 'blog':
+        if (post) {
+          updatePageSeo(getBlogPostSeo(post));
+        } else {
+          updatePageSeo({
+            title: 'Spice Export Insights & International Trade Intelligence | Origintra Exim Blog',
+            description: 'Commercial guides, market price analysis, crop harvest reports, and regulatory compliance updates for international spice importers and procurement managers.',
+            canonicalPath: '/blog',
+            ogType: 'website'
+          });
+        }
+        break;
+      case 'contact':
+        updatePageSeo({
+          title: 'Contact Origintra Exim | B2B Commercial Spice Trade Desk & Inquiries',
+          description: 'Connect directly with our international export desk for FOB / CIF container pricing, product specifications, and commercial sample shipments.',
+          canonicalPath: '/contact',
+          ogType: 'website'
+        });
+        break;
+      case 'meeting':
+        updatePageSeo({
+          title: 'Schedule Commercial Spice Consultation | Origintra Exim 30-Min Meeting',
+          description: 'Book a direct 30-minute B2B consultation with Origintra Exim senior export desk to discuss FOB/CIF container pricing, crop availability, and statutory compliance.',
+          canonicalPath: '/schedule-meeting',
+          ogType: 'website'
+        });
+        break;
+      case 'admin':
+        updatePageSeo({
+          title: 'Origintra Exim — Admin CMS Portal',
+          description: 'Corporate content and catalog administration portal.',
+          canonicalPath: '/admin',
+          noIndex: true
+        });
+        break;
+      case 'legal':
+        updatePageSeo({
+          title: `${route.legalType ? route.legalType.charAt(0).toUpperCase() + route.legalType.slice(1) : 'Legal'} Policy | Origintra Exim`,
+          description: 'Legal notices, commercial compliance, and trade terms for Origintra Exim.',
+          canonicalPath: route.path,
+          ogType: 'website'
+        });
+        break;
+    }
+  }, []);
+
+  const syncRouteState = useCallback(() => {
+    const route = parseCurrentRoute();
+
+    if (route.page === 'home') {
+      setCurrentPage('home');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'about') {
+      setCurrentPage('about');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'products') {
+      setCurrentPage('products');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'product-detail' && route.productSlug) {
+      const allProducts = AdminStorage.getProducts();
+      const found = allProducts.find((p) => p.slug === route.productSlug) || PRODUCTS.find((p) => p.slug === route.productSlug);
+      if (found) {
+        setSelectedProduct(found);
+        setCurrentPage('product-detail');
+        applyRouteSeo(route, found);
+      } else {
+        setCurrentPage('products');
+        setSelectedProduct(null);
+        applyRouteSeo({ page: 'products', path: '/products' });
+      }
+    } else if (route.page === 'global-reach') {
+      setCurrentPage('global-reach');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'quality') {
+      setCurrentPage('quality');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'blog') {
+      setCurrentPage('blog');
+      setSelectedProduct(null);
+      setBlogArticleSlug(route.blogSlug || null);
+      if (route.blogSlug) {
+        const allPosts = AdminStorage.getBlogPosts();
+        const found = allPosts.find((p) => p.slug === route.blogSlug || p.id === route.blogSlug) || BLOG_POSTS.find((p) => p.slug === route.blogSlug);
+        applyRouteSeo(route, null, found || null);
+      } else {
+        applyRouteSeo(route);
+      }
+    } else if (route.page === 'contact') {
+      setCurrentPage('contact');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'meeting') {
+      setCurrentPage('meeting');
+      setSelectedProduct(null);
+      setBlogArticleSlug(null);
+      applyRouteSeo(route);
+    } else if (route.page === 'admin') {
+      setCurrentPage('admin');
+      applyRouteSeo(route);
+    } else if (route.page === 'legal') {
+      if (route.legalType) {
+        setActiveLegalType(route.legalType);
+      }
+      setLegalModalOpen(true);
+      applyRouteSeo(route);
+    }
+  }, [applyRouteSeo]);
+
+  // Synchronize on mount and handle HTML5 popstate & hash changes
+  useEffect(() => {
+    syncRouteState();
+
+    const handlePopState = () => {
+      syncRouteState();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('hashchange', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handlePopState);
+    };
+  }, [syncRouteState]);
+
+  const handleNavigate = useCallback((target: string) => {
+    const cleanPath = getHref(target);
+    if (window.location.pathname !== cleanPath || window.location.hash) {
+      window.history.pushState(null, '', cleanPath);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    syncRouteState();
+  }, [syncRouteState]);
+
+  const handleOpenProductDetail = (product: Product) => {
+    setSelectedProduct(product);
+    setCurrentPage('product-detail');
+    const cleanPath = ROUTES.productDetail(product.slug);
+    if (window.location.pathname !== cleanPath || window.location.hash) {
+      window.history.pushState(null, '', cleanPath);
+    }
+    updatePageSeo(getProductSeo(product));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenQuoteWithProduct = (productName: string) => {
+    setPrefilledProduct(productName);
+    setQuoteModalOpen(true);
+  };
+
+  const handleOpenGeneralQuote = () => {
+    setPrefilledProduct('Red Chilli');
+    setQuoteModalOpen(true);
+  };
+
+  const handleOpenLegal = (type: 'privacy' | 'terms' | 'shipping' | 'cookies') => {
+    setActiveLegalType(type);
+    setLegalModalOpen(true);
+    const cleanPath = getHref(`legal-${type}`);
+    if (window.location.pathname !== cleanPath || window.location.hash) {
+      window.history.pushState(null, '', cleanPath);
+    }
+  };
+
+  const handleCloseLegal = () => {
+    setLegalModalOpen(false);
+    const parsed = parseCurrentRoute();
+    if (parsed.page === 'legal') {
+      const returnPath = currentPage === 'home' ? '/' : `/${currentPage}`;
+      window.history.replaceState(null, '', returnPath);
+      syncRouteState();
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#0070E0] selection:text-white antialiased">
+      
+      {/* Sticky Corporate Navbar (hidden on admin page) */}
+      {currentPage !== 'admin' && (
+        <Navbar
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onOpenQuote={handleOpenGeneralQuote}
+        />
+      )}
+
+      {/* Main Routed Page Content */}
+      <main className="flex-1">
+        {currentPage === 'home' && (
+          <HomePage
+            onNavigate={handleNavigate}
+            onOpenProductDetail={handleOpenProductDetail}
+            onOpenQuoteWithProduct={handleOpenQuoteWithProduct}
+            onOpenGeneralQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'about' && (
+          <AboutPage
+            onNavigate={handleNavigate}
+            onOpenQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'products' && (
+          <ProductsPage
+            onOpenProductDetail={handleOpenProductDetail}
+            onOpenQuoteWithProduct={handleOpenQuoteWithProduct}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {currentPage === 'product-detail' && selectedProduct && (
+          <ProductDetailPage
+            product={selectedProduct}
+            onBack={() => handleNavigate('products')}
+            onOpenQuoteWithProduct={handleOpenQuoteWithProduct}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {currentPage === 'global-reach' && (
+          <GlobalReachPage
+            onNavigate={handleNavigate}
+            onOpenQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'quality' && (
+          <QualityPage
+            onNavigate={handleNavigate}
+            onOpenQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'blog' && (
+          <BlogPage
+            initialSlug={blogArticleSlug}
+            onNavigate={handleNavigate}
+            onOpenQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'contact' && (
+          <ContactPage
+            onNavigate={handleNavigate}
+            onOpenQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'meeting' && (
+          <MeetingPage
+            onNavigate={handleNavigate}
+            onOpenQuote={handleOpenGeneralQuote}
+          />
+        )}
+
+        {currentPage === 'admin' && (
+          <AdminPage
+            onNavigate={handleNavigate}
+            onOpenProductDetail={handleOpenProductDetail}
+          />
+        )}
+      </main>
+
+      {/* Multi-column Corporate Footer (hidden on admin page) */}
+      {currentPage !== 'admin' && (
+        <Footer
+          onNavigate={handleNavigate}
+          onOpenQuote={handleOpenGeneralQuote}
+          onOpenLegal={handleOpenLegal}
+        />
+      )}
+
+      {/* Commercial Quotation (RFQ) Modal */}
+      <QuoteModal
+        isOpen={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+        prefilledProduct={prefilledProduct}
+      />
+
+      {/* Legal Policies Modal */}
+      <LegalModal
+        isOpen={legalModalOpen}
+        onClose={handleCloseLegal}
+        policyType={activeLegalType}
+      />
+
+      {/* Professional Floating WhatsApp Action Button (hidden on admin page) */}
+      {currentPage !== 'admin' && (
+        <div className="fixed bottom-6 right-6 z-40">
+          <a
+            href={COMPANY_CONFIG.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-[#20ba59] to-[#25D366] text-white shadow-[0_6px_24px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.6)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+            aria-label="Direct WhatsApp Trade Desk"
+          >
+            {/* Authentic WhatsApp Icon */}
+            <svg className="w-7 h-7 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.767.46 3.49 1.332 5.006L2 22l5.105-1.339a9.98 9.98 0 004.926 1.282h.005c5.535 0 10.03-4.496 10.03-10.031A10.024 10.024 0 0012.031 2zm0 18.369c-1.503 0-2.977-.404-4.264-1.168l-.306-.182-3.17.832.846-3.09-.199-.317A8.344 8.344 0 013.662 12.03c0-4.614 3.755-8.369 8.369-8.369 2.235 0 4.337.871 5.918 2.452a8.324 8.324 0 012.451 5.918c0 4.615-3.755 8.37-8.369 8.37zm4.588-6.265c-.252-.126-1.488-.734-1.719-.818-.231-.084-.399-.126-.567.126-.168.252-.651.818-.798.986-.147.168-.294.189-.546.063-.252-.126-1.063-.392-2.025-1.25-.749-.668-1.255-1.493-1.402-1.745-.147-.252-.016-.388.11-.514.113-.113.252-.294.378-.441.126-.147.168-.252.252-.42.084-.168.042-.315-.021-.441-.063-.126-.567-1.365-.777-1.869-.205-.491-.413-.424-.567-.432l-.483-.008c-.168 0-.441.063-.672.315-.231.252-.882.861-.882 2.1 0 1.239.903 2.436 1.029 2.604.126.168 1.777 2.713 4.305 3.805.602.26 1.072.415 1.439.532.605.192 1.155.165 1.59.1.485-.072 1.488-.609 1.698-1.197.21-.588.21-1.092.147-1.197-.063-.105-.231-.168-.483-.294z" />
+            </svg>
+
+            {/* Online notification badge dot */}
+            <span className="absolute top-0 right-0 flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-white"></span>
+            </span>
+
+            {/* Professional Floating Tooltip */}
+            <div className="absolute right-16 top-1/2 -translate-y-1/2 px-3.5 py-1.5 bg-[#0A1C3E] text-white text-xs font-semibold rounded-xl shadow-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-x-2 group-hover:translate-x-0 border border-slate-700/60 flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse"></span>
+              <span>WhatsApp Trade Desk</span>
+              <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-[#0A1C3E] rotate-45 border-r border-t border-slate-700/60"></div>
+            </div>
+          </a>
+        </div>
+      )}
+
+    </div>
+  );
+};
+
+export default App;

@@ -1,0 +1,1105 @@
+import React from 'react';
+import { 
+  ArrowUpRight, 
+  ArrowRight, 
+  ShieldCheck, 
+  Globe, 
+  FileText, 
+  Package, 
+  Truck, 
+  Compass, 
+  Layers, 
+  Search, 
+  Send, 
+  ExternalLink, 
+  Quote, 
+  MapPin, 
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  CheckCircle2,
+  Calendar
+} from 'lucide-react';
+import { PRODUCTS as DEFAULT_PRODUCTS } from '../data/products';
+import { BLOG_POSTS as DEFAULT_BLOG_POSTS } from '../data/blog';
+import { COMPANY_CONFIG } from '../data/company';
+import { Product, BlogPost, Testimonial } from '../types';
+import { AdminStorage } from '../services/adminStorage';
+
+interface HomePageProps {
+  onNavigate: (page: string) => void;
+  onOpenProductDetail: (product: Product) => void;
+  onOpenQuoteWithProduct: (productName: string) => void;
+  onOpenGeneralQuote: () => void;
+}
+
+export const HomePage: React.FC<HomePageProps> = ({
+  onNavigate,
+  onOpenProductDetail,
+  onOpenQuoteWithProduct,
+  onOpenGeneralQuote
+}) => {
+  const heroSlides = [
+    {
+      id: 'spices-assortment',
+      image: '/assets/hero/spices-hero-banner.jpg',
+      alt: 'Origintra Exim premium whole spices and export agricultural assortment',
+      badge: 'All Indian Spices',
+      eyebrow: 'Direct Farmgate Sourcing • Multi-Commodity FCL',
+      headline: 'Connecting India’s Finest Spices to the World',
+      subline: 'Whole Seed Spices, Pure Ground Powders & Custom Sourcing',
+      description: 'From prime whole pods and Sortex-cleaned seeds to ultra-fine pulverized powders, Origintra Exim connects international importers, food processors, and re-packers directly to certified Indian agricultural belts.',
+      ctaText: 'Request a Quote'
+    },
+    {
+      id: 'red-chilli',
+      image: '/assets/hero/banner-red-chilli.jpg',
+      alt: 'Export grade Indian whole dried red chilli and ground powder',
+      badge: 'Red Chilli Specialist',
+      eyebrow: 'Guntur & Byadgi Belts • Stemless Pods & Powders',
+      headline: 'Premium Indian Dried Red Chilli & Pure Powder',
+      subline: 'S17 Teja, Sanam S4, Byadgi & 334 Varieties with Standardized SHU Heat',
+      description: 'Machine-stemmed whole red chillies and vibratory-sifted powders milled under low temperature controls. Guaranteed negative for synthetic Sudan dyes and fully tested for Aflatoxin and pesticide MRL compliance.',
+      ctaText: 'Enquire for Red Chilli'
+    },
+    {
+      id: 'turmeric',
+      image: '/assets/hero/banner-turmeric.jpg',
+      alt: 'High curcumin Indian turmeric fingers and ground turmeric powder',
+      badge: 'Golden Turmeric',
+      eyebrow: 'Salem, Nizamabad & Alleppey • Curcumin up to 5.5%+',
+      headline: 'Curcumin-Rich Indian Turmeric Fingers & Powders',
+      subline: 'Double-Polished Whole Fingers & Pure Golden Milled Powders',
+      description: 'Harvested from premier turmeric cultivation hubs in Southern and Central India. High natural curcumin concentration, zero lead chromate, and packed in multi-wall moisture-barrier export sacks.',
+      ctaText: 'Enquire for Turmeric'
+    },
+    {
+      id: 'cumin',
+      image: '/assets/hero/banner-cumin.jpg',
+      alt: 'Machine cleaned Sortex Indian cumin seeds jeera',
+      badge: 'Cumin (Jeera) Seeds',
+      eyebrow: 'Unjha Mandi Hub • Gujarat & Rajasthan Belts',
+      headline: 'Sortex-Cleaned Machine Purity Indian Cumin Seeds',
+      subline: '99% to 99.5% Purity Singapore & European Machine Cleaned Grades',
+      description: 'Direct procurement from primary farm yards in Unjha and Western India. Free from foreign seeds and dirt with moisture below 8-9% and high volatile essential oil retention for extractors and blenders.',
+      ctaText: 'Enquire for Cumin'
+    },
+    {
+      id: 'coriander',
+      image: '/assets/hero/banner-coriander.jpg',
+      alt: 'Eagle and Scooter quality Indian coriander seeds and powder',
+      badge: 'Coriander (Dhaniya)',
+      eyebrow: 'Kota & Ramganj Mandi • Fresh Harvest Crop',
+      headline: 'Eagle & Scooter Quality Green Coriander Seeds',
+      subline: 'Aromatic Whole Round, Split (Dal), & Fragrant Ground Powders',
+      description: 'Sun-cured golden-green coriander seeds with sweet citrusy aroma. Available in whole round, split, and ultra-fine ground powder tailored for commercial spice seasoning mixes and curry powders.',
+      ctaText: 'Enquire for Coriander'
+    }
+  ];
+
+  const [products, setProducts] = React.useState<Product[]>(() => AdminStorage.getProducts());
+  const [blogPosts, setBlogPosts] = React.useState<BlogPost[]>(() => AdminStorage.getBlogPosts());
+  const [testimonials, setTestimonials] = React.useState<Testimonial[]>(() => AdminStorage.getTestimonials());
+
+  React.useEffect(() => {
+    const updateProds = () => setProducts(AdminStorage.getProducts());
+    const updateBlogs = () => setBlogPosts(AdminStorage.getBlogPosts());
+    const updateTestimonials = () => setTestimonials(AdminStorage.getTestimonials());
+    window.addEventListener('origintra_products_updated', updateProds);
+    window.addEventListener('origintra_blog_updated', updateBlogs);
+    window.addEventListener('origintra_testimonials_updated', updateTestimonials);
+    return () => {
+      window.removeEventListener('origintra_products_updated', updateProds);
+      window.removeEventListener('origintra_blog_updated', updateBlogs);
+      window.removeEventListener('origintra_testimonials_updated', updateTestimonials);
+    };
+  }, []);
+
+  const [currentHeroSlide, setCurrentHeroSlide] = React.useState(0);
+  const [fadeState, setFadeState] = React.useState<'in' | 'out'>('in');
+
+  const goToSlide = React.useCallback((newIdx: number) => {
+    setFadeState('out');
+    setTimeout(() => {
+      setCurrentHeroSlide(newIdx);
+      setFadeState('in');
+    }, 250);
+  }, []);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      goToSlide((currentHeroSlide + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [currentHeroSlide, goToSlide, heroSlides.length]);
+
+  const currentSlideData = heroSlides[currentHeroSlide];
+
+  const handleHeroCta = (slide: typeof heroSlides[0]) => {
+    if (slide.id === 'red-chilli') {
+      onOpenQuoteWithProduct('Red Chilli');
+    } else if (slide.id === 'turmeric') {
+      onOpenQuoteWithProduct('Turmeric');
+    } else if (slide.id === 'cumin') {
+      onOpenQuoteWithProduct('Cumin Seeds');
+    } else if (slide.id === 'coriander') {
+      onOpenQuoteWithProduct('Coriander Seeds');
+    } else {
+      onOpenGeneralQuote();
+    }
+  };
+
+  const handleSecondaryCta = (slide: typeof heroSlides[0]) => {
+    if (slide.id === 'red-chilli') {
+      const prod = products.find(p => p.id === 'whole-red-chili' || p.id === 'red-chilli');
+      if (prod) { onOpenProductDetail(prod); return; }
+    } else if (slide.id === 'turmeric') {
+      const prod = products.find(p => p.id === 'turmeric');
+      if (prod) { onOpenProductDetail(prod); return; }
+    } else if (slide.id === 'cumin') {
+      const prod = products.find(p => p.id === 'cumin-seeds' || p.id === 'cumin');
+      if (prod) { onOpenProductDetail(prod); return; }
+    } else if (slide.id === 'coriander') {
+      const prod = products.find(p => p.id === 'coriander-seeds' || p.id === 'coriander');
+      if (prod) { onOpenProductDetail(prod); return; }
+    }
+    onNavigate('products');
+  };
+
+  const whyChooseBlocks = [
+    {
+      title: 'Reliable Sourcing',
+      desc: 'Strong sourcing relationships across key agricultural belts in India, securing consistent harvest lots directly from accredited mandis and grower clusters.',
+      icon: Compass
+    },
+    {
+      title: 'Consistent Quality',
+      desc: 'Focused on product quality, optical sorting, controlled moisture equilibrium, and physical purity tailored to destination market thresholds.',
+      icon: ShieldCheck
+    },
+    {
+      title: 'Export Documentation',
+      desc: 'Professional handling of required export paperwork: Commercial Invoice, Packing List, Bill of Lading, Certificate of Origin, and Phytosanitary Certificate.',
+      icon: FileText
+    },
+    {
+      title: 'Flexible Supply',
+      desc: 'Commercial solutions designed around buyer volume requirements, from full container loads (FCL) to multi-commodity mixed containers.',
+      icon: Layers
+    },
+    {
+      title: 'Transparent Communication',
+      desc: 'Clear, direct communication from initial technical inquiry and sample verification to production updates and maritime vessel tracking.',
+      icon: Send
+    },
+    {
+      title: 'Global Delivery',
+      desc: 'Supporting international trade logistics with direct vessel departures from major Indian container gateways including Mundra, Nhava Sheva, and Cochin.',
+      icon: Truck
+    }
+  ];
+
+
+  const marqueeCountries = [
+    { name: 'China', code: 'cn' },
+    { name: 'USA', code: 'us' },
+    { name: 'UAE', code: 'ae' },
+    { name: 'UK', code: 'gb' },
+    { name: 'Germany', code: 'de' },
+    { name: 'Thailand', code: 'th' },
+    { name: 'Malaysia', code: 'my' },
+    { name: 'Indonesia', code: 'id' },
+    { name: 'Vietnam', code: 'vn' },
+    { name: 'Singapore', code: 'sg' },
+    { name: 'Saudi Arabia', code: 'sa' },
+    { name: 'Bangladesh', code: 'bd' },
+    { name: 'Sri Lanka', code: 'lk' },
+    { name: 'Kuwait', code: 'kw' },
+    { name: 'Qatar', code: 'qa' },
+    { name: 'Canada', code: 'ca' },
+    { name: 'Australia', code: 'au' },
+    { name: 'Netherlands', code: 'nl' },
+    { name: 'Japan', code: 'jp' },
+    { name: 'South Korea', code: 'kr' },
+    { name: 'Egypt', code: 'eg' },
+    { name: 'Turkey', code: 'tr' },
+    { name: 'South Africa', code: 'za' },
+    { name: 'France', code: 'fr' },
+    { name: 'Italy', code: 'it' },
+    { name: 'Spain', code: 'es' },
+    { name: 'Brazil', code: 'br' },
+    { name: 'Mexico', code: 'mx' },
+    { name: 'Russia', code: 'ru' },
+    { name: 'Poland', code: 'pl' }
+  ];
+
+  // Curated flagship commodities for homepage - clean, compact showcase of 3 iconic products (or flagged flagship products)
+  const defaultFlagshipIds = ['whole-red-chili', 'cumin-seeds', 'turmeric'];
+  const flagships = products.filter(p => p.isFlagship);
+  const featuredProducts = flagships.length > 0
+    ? flagships.slice(0, 3)
+    : products.filter(p => defaultFlagshipIds.includes(p.id))
+        .sort((a, b) => defaultFlagshipIds.indexOf(a.id) - defaultFlagshipIds.indexOf(b.id));
+
+  return (
+    <div className="bg-white text-[#0F172A]">
+      
+      {/* 1. HERO SECTION (Dynamic Spice Image & Matching Content Carousel) */}
+      <section className="relative overflow-hidden min-h-[600px] sm:min-h-[640px] lg:min-h-[700px] flex items-center text-white">
+        {/* Full-bleed authentic Indian spice background slides */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {heroSlides.map((slide, idx) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                idx === currentHeroSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'
+              }`}
+            >
+              <img
+                src={slide.image}
+                alt={slide.alt}
+                className={`w-full h-full object-cover object-center transition-transform duration-[7000ms] ease-out ${
+                  idx === currentHeroSlide ? 'scale-105' : 'scale-100'
+                }`}
+              />
+            </div>
+          ))}
+          {/* Directional enterprise editorial vignette: subtle dark blue/navy gradient keeping text crystal-clear while authentic spices remain vivid */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071120]/95 via-[#071120]/80 via-45% to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071120]/70 via-transparent to-black/20 z-[1]" />
+        </div>
+
+        {/* Foreground Content */}
+        <div className="container-x mx-auto max-w-[1440px] relative py-12 sm:py-20 md:py-24 z-10 w-full">
+          <div className="max-w-3xl space-y-4 sm:space-y-6">
+            
+            {/* Animated Text Container with smooth transition */}
+            <div className={`transition-all duration-300 ease-out transform ${
+              fadeState === 'in' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
+            } space-y-3.5 sm:space-y-4.5`}>
+              
+              {/* Eyebrow & Spice Badge */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="inline-flex items-center space-x-2 bg-blue-500/20 border border-blue-400/30 text-sky-300 px-3 py-1 rounded-md text-[11px] sm:text-xs font-semibold backdrop-blur-md shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                  <span>{currentSlideData.badge}</span>
+                </span>
+                <span className="text-xs sm:text-sm font-medium text-slate-300 tracking-wide">
+                  {currentSlideData.eyebrow}
+                </span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-bold text-white tracking-tight leading-[1.14]">
+                {currentSlideData.headline}
+                <span className="text-[#38BDF8]">.</span>
+              </h1>
+
+              {/* Supporting Sub-line */}
+              <p className="text-sm sm:text-base md:text-lg font-medium text-sky-200 leading-snug">
+                {currentSlideData.subline}
+              </p>
+
+              {/* Body Description */}
+              <p className="text-xs sm:text-sm md:text-base text-slate-200 max-w-2xl leading-relaxed font-normal">
+                {currentSlideData.description}
+              </p>
+
+              {/* CTAs (Dynamic matching buttons) */}
+              <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+                <button
+                  onClick={() => handleHeroCta(currentSlideData)}
+                  className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#0070E0] hover:bg-[#005bb5] text-white text-xs sm:text-sm font-semibold shadow-lg shadow-blue-900/30 flex items-center space-x-2.5 transition-all cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>{currentSlideData.ctaText}</span>
+                </button>
+
+                <button
+                  onClick={() => handleSecondaryCta(currentSlideData)}
+                  className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl border border-white/30 hover:border-white/80 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md text-xs sm:text-sm font-semibold transition-all flex items-center space-x-2 cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <span>{currentSlideData.id === 'spices-assortment' ? 'Explore Products' : 'View Specifications'}</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </div>
+
+            </div>
+
+            {/* Mobile Slide Navigation Indicator Dots */}
+            <div className="flex items-center space-x-2 pt-1 sm:hidden">
+              {heroSlides.map((slide, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goToSlide(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === currentHeroSlide ? 'w-6 bg-[#0070E0]' : 'w-2 bg-white/40'
+                  }`}
+                  aria-label={`Slide ${idx + 1}: ${slide.badge}`}
+                />
+              ))}
+            </div>
+
+          </div>
+        </div>
+
+        {/* Floating Slide Navigation Controls on Tablet / Desktop */}
+        <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-20 hidden sm:flex items-center space-x-2.5 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-xl">
+          <button
+            onClick={() => goToSlide((currentHeroSlide - 1 + heroSlides.length) % heroSlides.length)}
+            className="p-1 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Previous spice slide"
+            title="Previous spice"
+          >
+            <ChevronLeft className="w-3.5 h-3.5" />
+          </button>
+
+          <div className="flex items-center space-x-1.5">
+            {heroSlides.map((slide, idx) => (
+              <button
+                key={idx}
+                onClick={() => goToSlide(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  idx === currentHeroSlide ? 'w-6 bg-[#0070E0]' : 'w-2 bg-white/40 hover:bg-white/70'
+                }`}
+                title={slide.badge}
+                aria-label={`Slide ${idx + 1}: ${slide.badge}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => goToSlide((currentHeroSlide + 1) % heroSlides.length)}
+            className="p-1 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Next spice slide"
+            title="Next spice"
+          >
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </section>
+
+      {/* 2. GLOBAL EXPORT DESTINATIONS MARQUEE (Immediately following Hero) */}
+      <section className="py-3 sm:py-5 bg-[#F8F7F4] border-b border-slate-200/80 overflow-hidden relative">
+
+        {/* Marquee Track with gradient fade edges */}
+        <div className="relative w-full overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-16 md:w-24 bg-gradient-to-r from-[#F8F7F4] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-16 md:w-24 bg-gradient-to-l from-[#F8F7F4] to-transparent z-10 pointer-events-none" />
+
+          <div className="animate-marquee flex items-center py-1 sm:py-2">
+            {[...marqueeCountries, ...marqueeCountries].map((country, idx) => (
+              <div 
+                key={idx} 
+                className="flex flex-col items-center justify-center shrink-0 mx-2 sm:mx-4 md:mx-5 group cursor-default"
+              >
+                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 aspect-square rounded-full overflow-hidden shadow-2xs border border-slate-300/80 bg-white flex items-center justify-center transition-all duration-200 group-hover:scale-110 group-hover:shadow-md group-hover:border-[#0070E0]/60">
+                  <img
+                    src={`/flags/${country.code}.png`}
+                    alt={`${country.name} Flag`}
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="mt-1 text-[8px] sm:text-[10px] md:text-[11px] font-bold tracking-wider text-slate-600 uppercase group-hover:text-[#0070E0] transition-colors whitespace-nowrap">
+                  {country.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. ABOUT ORIGINTRA */}
+      <section className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+        <div className="container-x mx-auto max-w-[1440px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
+                About Origintra Exim
+              </span>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-[#0F172A] tracking-tight leading-tight">
+                Built for Global Trade. Driven by Trust<span className="text-[#0070E0]">.</span>
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                Origintra Exim is built around a simple principle — global trade works best when quality, transparency and reliability move together.
+              </p>
+
+              <p className="text-base text-slate-600 leading-relaxed">
+                We work with trusted sourcing networks to connect international buyers with carefully selected Indian spices and agricultural products, with a strong focus on consistency, documentation and dependable supply.
+              </p>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => onNavigate('about')}
+                  className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-6 py-3 text-xs sm:text-sm font-semibold flex items-center space-x-2 cursor-pointer"
+                >
+                  <span>More About Origintra</span>
+                  <ArrowRight className="w-4 h-4 ml-1" />
+                </button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="rounded-2xl overflow-hidden shadow-sm aspect-4/3 border border-slate-200 group">
+                  <img
+                    src="/assets/about/spice-harvest-sourcing.jpg"
+                    alt="Indian agricultural quality inspection and farm-gate spice sourcing"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="rounded-2xl overflow-hidden shadow-sm aspect-square border border-slate-200 group">
+                  <img
+                    src="/assets/hero/banner-red-chilli.jpg"
+                    alt="Clean red chilli whole pods, ground powder, and export bags"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-4 pt-6 sm:pt-8">
+                <div className="rounded-2xl overflow-hidden shadow-sm aspect-square border border-slate-200 group">
+                  <img
+                    src="/assets/about/spice-processing-plant.jpg"
+                    alt="Modern spice optical sorting and mechanical milling plant"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="rounded-2xl overflow-hidden shadow-sm aspect-4/3 border border-slate-200 group">
+                  <img
+                    src="/assets/about/container-ship-port.jpg"
+                    alt="Mundra Port deep-water container terminal and global ocean freight dispatch"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PRODUCTS SECTION */}
+      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200/80">
+        <div className="container-x mx-auto max-w-[1440px]">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-14">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
+                Featured Commodities
+              </span>
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-semibold text-[#0F172A] tracking-tight mt-1.5 sm:mt-2">
+                Our Export Products<span className="text-[#0070E0]">.</span>
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+                Featured flagship commodities from our 27-product portfolio. Sourced directly from contracted regional farms across India.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('products')}
+              className="btn-pill btn-pill-outline border-slate-300 text-slate-800 hover:border-[#0A1C3E] hover:text-[#0A1C3E] px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-semibold shrink-0 cursor-pointer self-start md:self-auto"
+            >
+              <span>View All 27 Products</span>
+              <ArrowUpRight className="w-4 h-4 ml-1" />
+            </button>
+          </div>
+
+          {/* Product Cards Grid - Concise 3-product showcase */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {featuredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="relative aspect-[4/5] overflow-hidden bg-slate-50">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#0A1C3E]/80 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-medium px-2.5 py-1 rounded-md">
+                      {product.origin}
+                    </div>
+
+                    {/* Powder Form Badge */}
+                    {product.powderDetails && (
+                      <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-xs text-[#0A1C3E] text-[10px] font-bold px-2 py-0.5 rounded shadow-xs flex items-center space-x-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0070E0]" />
+                        <span>Powder Form Available</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="p-4 sm:p-6 space-y-2.5 sm:space-y-4">
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-display font-semibold text-[#0F172A] group-hover:text-[#0070E0] transition-colors">
+                        {product.name}
+                      </h3>
+                      {product.botanicalName && (
+                        <p className="text-xs text-slate-500 italic mt-0.5">
+                          {product.botanicalName}
+                        </p>
+                      )}
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-2">
+                      {product.shortDescription}
+                    </p>
+
+                    <div>
+                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                        Available Forms:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {product.availableForms.slice(0, 2).map((form, idx) => (
+                          <span
+                            key={idx}
+                            className={`text-[11px] sm:text-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md ${
+                              form.toLowerCase().includes('powder')
+                                ? 'bg-blue-50 text-[#0070E0] font-semibold border border-blue-100'
+                                : 'bg-slate-100 text-slate-700'
+                            }`}
+                          >
+                            {form}
+                          </span>
+                        ))}
+                        {product.availableForms.length > 2 && (
+                          <span className="text-[11px] sm:text-xs text-[#0070E0] font-medium self-center pl-1">
+                            +{product.availableForms.length - 2} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-6 pt-0 border-t border-slate-100 mt-3 sm:mt-4 flex items-center justify-between gap-3">
+                  <a
+                    href={`/products/${product.slug}`}
+                    onClick={(e) => {
+                      if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                        e.preventDefault();
+                        onOpenProductDetail(product);
+                      }
+                    }}
+                    className="text-xs font-semibold text-slate-700 hover:text-[#0070E0] flex items-center space-x-1 cursor-pointer"
+                  >
+                    <span>View Details</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+
+                  <button
+                    onClick={() => onOpenQuoteWithProduct(product.name)}
+                    className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#0A1C3E] hover:bg-[#0070E0] text-white text-xs font-semibold transition cursor-pointer flex items-center space-x-1"
+                  >
+                    <span>Enquire</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* View More Products CTA */}
+          <div className="mt-8 sm:mt-12 text-center">
+            <button
+              onClick={() => onNavigate('products')}
+              className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-6 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold inline-flex items-center space-x-2 shadow-sm transition-all cursor-pointer"
+            >
+              <span>Explore All 27 Export Products</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <p className="text-xs text-slate-500 mt-2">
+              Browse all 4 categories: Whole Spices (9) • Ground Spices (6) • Sortex Seeds (5) • Blends (7)
+            </p>
+          </div>
+
+          {/* Precision Powder Milling Callout */}
+          <div className="mt-14 p-8 rounded-2xl bg-white border border-blue-200/80 shadow-2xs flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center shrink-0">
+                <Layers className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">Custom Powder Milling</span>
+                  <span className="text-slate-300">•</span>
+                  <span className="text-xs text-slate-500 font-mono">40 to 120 Mesh</span>
+                </div>
+                <h4 className="text-lg font-bold text-[#0F172A]">
+                  Precision Ground Indian Spice Powders for Commercial Grinders & Brands
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+                  We supply both whole agricultural crops and laboratory-tested pure spice powders (Red Chilli Powder, Turmeric Powder, Coriander Powder, Cumin Powder, Moringa Leaf Powder) milled under low-temperature controls with airtight moisture-barrier export packing.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => onOpenQuoteWithProduct('Custom Spice Powders (Ground Form)')}
+              className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-6 py-3 text-xs font-semibold shrink-0 cursor-pointer flex items-center space-x-1.5 whitespace-nowrap"
+            >
+              <span>Enquire for Powder Form</span>
+              <ArrowUpRight className="w-4 h-4 ml-0.5" />
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5. WHY ORIGINTRA */}
+      <section className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+        <div className="container-x mx-auto max-w-[1440px]">
+          
+          <div className="max-w-3xl mb-16">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
+              Value Proposition
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+              Why International Buyers Choose Origintra<span className="text-[#0070E0]">.</span>
+            </h2>
+            <p className="text-base sm:text-lg text-slate-600 mt-3">
+              Built on dependable agricultural supply chains, transparent communication, and disciplined export compliance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseBlocks.map((block, idx) => {
+              const IconComp = block.icon;
+              return (
+                <div
+                  key={idx}
+                  className="p-8 rounded-2xl border border-slate-200/80 bg-white hover:border-slate-300 hover:shadow-xs transition-all space-y-4"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center">
+                    <IconComp className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-display font-semibold text-[#0F172A]">
+                    {block.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {block.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. STATUTORY EXPORT CERTIFICATES & ACCREDITATIONS (FSSAI, APEDA, Spice Board, IEC, GST, MSME) */}
+      <section className="py-20 sm:py-28 bg-[#0A1C3E] text-white">
+        <div className="container-x mx-auto max-w-[1440px]">
+          
+          {/* Executive Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-8 border-b border-blue-900/60">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
+                Statutory Export Accreditations & Licensing
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white tracking-tight mt-2">
+                Government Verified & Certified for Global Trade<span className="text-[#38BDF8]">.</span>
+              </h2>
+              <p className="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl leading-relaxed">
+                Origintra Exim is a licensed Indian merchant exporter. Commercial spice consignments are governed by statutory food safety standards, lab clearances, and official trade certifications.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('quality')}
+              className="px-5 py-2.5 rounded-lg bg-[#0070E0] hover:bg-[#005bb5] text-white text-xs sm:text-sm font-semibold shrink-0 cursor-pointer flex items-center space-x-2 transition-colors shadow-sm"
+            >
+              <span>View Full Quality & Compliance</span>
+              <ArrowUpRight className="w-4 h-4 ml-0.5" />
+            </button>
+          </div>
+
+          {/* 6 Accreditations - Only Logos in Big Size */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+            
+            {/* 1. FSSAI */}
+            <div 
+              onClick={() => onNavigate('quality')}
+              className="bg-white rounded-2xl p-6 sm:p-7 flex items-center justify-center hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group shadow-md h-32 sm:h-38 md:h-44 border border-white/90"
+              title="FSSAI - Food Safety and Standards Authority of India"
+            >
+              <img 
+                src="/assets/certificates/fssai.png" 
+                alt="FSSAI" 
+                className="h-16 sm:h-20 md:h-24 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-110" 
+                loading="lazy"
+              />
+            </div>
+
+            {/* 2. APEDA */}
+            <div 
+              onClick={() => onNavigate('quality')}
+              className="bg-white rounded-2xl p-6 sm:p-7 flex items-center justify-center hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group shadow-md h-32 sm:h-38 md:h-44 border border-white/90"
+              title="APEDA - Agricultural and Processed Food Products Export Development Authority"
+            >
+              <img 
+                src="/assets/certificates/apeda.png" 
+                alt="APEDA" 
+                className="h-16 sm:h-20 md:h-24 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-110" 
+                loading="lazy"
+              />
+            </div>
+
+            {/* 3. Spice Board */}
+            <div 
+              onClick={() => onNavigate('quality')}
+              className="bg-white rounded-2xl p-6 sm:p-7 flex items-center justify-center hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group shadow-md h-32 sm:h-38 md:h-44 border border-white/90"
+              title="Spices Board India - Ministry of Commerce and Industry"
+            >
+              <img 
+                src="/assets/certificates/spices-board.png" 
+                alt="Spices Board India" 
+                className="h-16 sm:h-20 md:h-24 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-110" 
+                loading="lazy"
+              />
+            </div>
+
+            {/* 4. IEC */}
+            <div 
+              onClick={() => onNavigate('quality')}
+              className="bg-white rounded-2xl p-6 sm:p-7 flex items-center justify-center hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group shadow-md h-32 sm:h-38 md:h-44 border border-white/90"
+              title="IEC - Import Export Code (DGFT, Ministry of Commerce)"
+            >
+              <img 
+                src="/assets/certificates/iec.png" 
+                alt="IEC DGFT License" 
+                className="h-16 sm:h-20 md:h-24 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-110" 
+                loading="lazy"
+              />
+            </div>
+
+            {/* 5. GST */}
+            <div 
+              onClick={() => onNavigate('quality')}
+              className="bg-white rounded-2xl p-6 sm:p-7 flex items-center justify-center hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group shadow-md h-32 sm:h-38 md:h-44 border border-white/90"
+              title="GST - Goods and Services Tax"
+            >
+              <img 
+                src="/assets/certificates/gst.png" 
+                alt="GST" 
+                className="h-16 sm:h-20 md:h-24 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-110" 
+                loading="lazy"
+              />
+            </div>
+
+            {/* 6. MSME */}
+            <div 
+              onClick={() => onNavigate('quality')}
+              className="bg-white rounded-2xl p-6 sm:p-7 flex items-center justify-center hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group shadow-md h-32 sm:h-38 md:h-44 border border-white/90"
+              title="MSME - Ministry of Micro, Small and Medium Enterprises"
+            >
+              <img 
+                src="/assets/certificates/msme.svg" 
+                alt="MSME" 
+                className="h-16 sm:h-20 md:h-24 w-auto max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-110" 
+                loading="lazy"
+              />
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 8.5 INTERNATIONAL BUYER TESTIMONIALS & TRADE REFERENCES (INFINITE MARQUEE) */}
+      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200/80 overflow-hidden">
+        <div className="container-x mx-auto max-w-[1440px]">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
+                Commercial Trade References
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+                What Global Trade Partners Say<span className="text-[#0070E0]">.</span>
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 mt-3 max-w-2xl">
+                Commercial feedback from international spice importers, food processors, and re-packers sourcing Indian commodities.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Continuous Infinite Marquee Track with Fade Masks */}
+        <div className="relative w-full overflow-hidden">
+          {/* Edge Gradient Fade Masks */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-slate-50 via-slate-50/80 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-slate-50 via-slate-50/80 to-transparent z-10" />
+
+          {/* Seamless Infinite Marquee Track */}
+          <div className="w-full overflow-hidden py-3">
+            <div className="animate-marquee-slow flex gap-6 sm:gap-8 items-stretch pl-4">
+              {(testimonials.length < 4
+                ? [...testimonials, ...testimonials, ...testimonials, ...testimonials]
+                : [...testimonials, ...testimonials]
+              ).map((item, idx) => (
+                <div 
+                  key={`${item.id}-${idx}`}
+                  className="w-[340px] sm:w-[400px] md:w-[440px] shrink-0 bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-blue-300 transition-all flex flex-col justify-between group"
+                >
+                  <div>
+                    {/* Top metadata: Commodity & Contract Volume */}
+                    <div className="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-100 text-xs">
+                      <span className="font-bold text-[#0070E0] truncate max-w-[220px]" title={item.commodity}>
+                        {item.commodity}
+                      </span>
+                      <span className="text-slate-500 font-mono text-[11px] bg-slate-100 px-2 py-0.5 rounded border border-slate-200/60 shrink-0">
+                        {item.volumeOrType || 'FCL Container'}
+                      </span>
+                    </div>
+
+                    {/* Port & Star Rating */}
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                      <div className="text-slate-400 font-mono text-[11px] flex items-center gap-1 truncate">
+                        <MapPin className="w-3 h-3 text-[#0070E0] shrink-0" />
+                        <span className="truncate">{item.destinationPort}</span>
+                      </div>
+                      <div className="flex items-center gap-0.5 shrink-0" title={`${item.rating || 5} out of 5 stars`}>
+                        {Array.from({ length: 5 }).map((_, sIdx) => (
+                          <Star 
+                            key={sIdx} 
+                            className={`w-3.5 h-3.5 ${
+                              sIdx < (item.rating || 5) 
+                                ? 'fill-amber-400 text-amber-400' 
+                                : 'text-slate-200'
+                            }`} 
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Quote Icon & Testimonial Statement */}
+                    <Quote className="w-7 h-7 text-blue-100 mb-2 group-hover:text-blue-200 transition-colors shrink-0" />
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic line-clamp-5 group-hover:line-clamp-none transition-all">
+                      "{item.testimonial}"
+                    </p>
+                  </div>
+
+                  {/* Author & Enterprise Credentials */}
+                  <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <div className="flex items-center space-x-3 min-w-0">
+                      {item.avatar ? (
+                        <img 
+                          src={item.avatar} 
+                          alt={item.author} 
+                          className="w-10 h-10 rounded-full object-cover border border-slate-200 shrink-0 shadow-2xs" 
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#0A1C3E] to-[#0070E0] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-2xs">
+                          {item.author.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()}
+                        </div>
+                      )}
+                      <div className="min-w-0">
+                        <h4 className="text-xs sm:text-sm font-bold text-slate-900 truncate group-hover:text-[#0070E0] transition-colors">
+                          {item.author}
+                        </h4>
+                        <p className="text-[11px] text-slate-500 truncate">
+                          {item.role}
+                        </p>
+                        <p className="text-[11px] font-semibold text-[#0A1C3E] truncate flex items-center gap-1 mt-0.5">
+                          <Building2 className="w-3 h-3 text-slate-400 shrink-0" />
+                          <span className="truncate">{item.company}</span>
+                          <span className="text-slate-400 font-normal shrink-0">({item.country})</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="w-7 h-7 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0" title="Verified Trade Consignment">
+                      <ShieldCheck className="w-4 h-4" />
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      {/* 9. BLOG / INSIGHTS PREVIEW */}
+      <section className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
+        <div className="container-x mx-auto max-w-[1440px]">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
+                Market Knowledge
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+                Export Insights & Trade Perspectives<span className="text-[#0070E0]">.</span>
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 mt-3">
+                Practical articles on Indian agricultural crops, export compliance, and maritime logistics.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('blog')}
+              className="btn-pill btn-pill-outline border-slate-300 text-slate-800 hover:border-[#0A1C3E] hover:text-[#0A1C3E] px-6 py-2.5 text-xs sm:text-sm font-semibold shrink-0 cursor-pointer"
+            >
+              <span>View All Articles</span>
+              <ArrowUpRight className="w-4 h-4 ml-1" />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.slice(0, 3).map((post) => (
+              <a
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                onClick={(e) => {
+                  if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                    e.preventDefault();
+                    onNavigate(`/blog/${post.slug}`);
+                  }
+                }}
+                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between group text-inherit no-underline"
+              >
+                <div>
+                  <div className="aspect-16/10 overflow-hidden bg-slate-100">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="p-6 space-y-3">
+                    <div className="flex items-center justify-between text-xs text-slate-400">
+                      <span className="font-semibold text-[#0070E0]">{post.category}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <h3 className="text-lg font-display font-semibold text-[#0F172A] group-hover:text-[#0070E0] transition-colors leading-snug">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0 border-t border-slate-100 mt-2 flex items-center justify-between text-xs font-semibold text-slate-700">
+                  <span className="text-slate-400 font-normal">{post.date}</span>
+                  <span className="text-[#0070E0] flex items-center space-x-1 group-hover:translate-x-0.5 transition-transform">
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 10. REQUEST A QUOTE CTA SECTION */}
+      <section className="py-20 sm:py-28 bg-[#0A1C3E] text-white">
+        <div className="container-x mx-auto max-w-[1440px]">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
+              Commercial Sourcing Desk
+            </span>
+
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white tracking-tight">
+              Ready to Discuss Your Spice Import Requirements?
+            </h2>
+
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Share your target product grades, container volumes, and discharge port. Our commercial team will evaluate crop lot availability and provide a clear, competitive quotation.
+            </p>
+
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-8 sm:gap-10">
+              <button
+                onClick={onOpenGeneralQuote}
+                className="text-white hover:text-[#38BDF8] text-base sm:text-lg font-medium flex items-center space-x-2 transition-colors cursor-pointer group"
+              >
+                <span>Request a Quote</span>
+                <ArrowUpRight className="w-5 h-5 ml-1 text-white group-hover:text-[#38BDF8] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              </button>
+
+              <button
+                onClick={() => onNavigate('contact')}
+                className="rounded-full border border-white/40 hover:border-white text-white hover:bg-white/10 px-8 py-3 sm:px-9 sm:py-3 text-base font-medium transition-all duration-200 cursor-pointer"
+              >
+                <span>Contact Trade Desk</span>
+              </button>
+            </div>
+
+            <div className="pt-6 text-xs text-slate-400 flex flex-wrap items-center justify-center gap-6">
+              <span>✓ Responses dispatched within 24-48 business hours</span>
+              <span>✓ Direct Indian farmgate sourcing</span>
+              <span>✓ Customized container packaging</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 11. CONTACT SUMMARY STRIP */}
+      <section className="py-12 bg-slate-50 border-t border-slate-200">
+        <div className="container-x mx-auto max-w-[1440px]">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div>
+              <h3 className="text-base font-bold text-[#0F172A]">
+                Origintra Exim — Global Trade Desk
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Connecting Indian agricultural sourcing to overseas food industries & distributors.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
+              <a
+                href={`mailto:${COMPANY_CONFIG.primaryEmail}`}
+                className="text-[#0070E0] hover:underline"
+              >
+                {COMPANY_CONFIG.primaryEmail}
+              </a>
+              <span className="text-slate-300">•</span>
+              <a
+                href={`tel:${COMPANY_CONFIG.phone}`}
+                className="text-slate-700 hover:text-[#0070E0]"
+              >
+                {COMPANY_CONFIG.phoneDisplay}
+              </a>
+              <span className="text-slate-300">•</span>
+              <a
+                href={COMPANY_CONFIG.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-600 hover:underline"
+              >
+                WhatsApp Desk
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+};
