@@ -257,14 +257,14 @@ export const BlogPage: React.FC<BlogPageProps> = ({
     <div className="bg-white text-[#0F172A] min-h-[70vh]">
       
       {/* Blog Page Hero */}
-      <section className="bg-[#0A1C3E] text-white py-16 sm:py-24">
-        <div className="container-x mx-auto max-w-[1440px]">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+        <div className="container-x mx-auto max-w-[1440px] relative">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               Trade Intelligence & Knowledge
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
-              Origintra Trade Insights<span className="text-[#38BDF8]">.</span>
+              Origintra Trade Insights<span className="text-[#0070E0]">.</span>
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
               Practical market analysis, crop harvest perspectives, and regulatory export documentation guides for global spice importers.

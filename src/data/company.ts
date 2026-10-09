@@ -34,6 +34,9 @@ export interface CompanyConfig {
     timezone: string;
     deskNote: string;
   };
+  instagramUrl: string;
+  facebookUrl?: string;
+  linkedinUrl?: string;
   complianceStatement: string;
   sourcingStatement: string;
 }
@@ -52,11 +55,14 @@ export const COMPANY_CONFIG: CompanyConfig = {
   whatsappDisplay: '+91 70691 82990',
   whatsappUrl: 'https://wa.me/917069182990?text=Hello%20Origintra%20Exim,%20I%20am%20interested%20in%20sourcing%20quality%20spices.',
   calendlyUrl: 'https://calendly.com/origintraexim/30min',
+  instagramUrl: 'https://www.instagram.com/origintra.exim/',
+  facebookUrl: 'https://www.facebook.com/origintra.exim',
+  linkedinUrl: 'https://www.linkedin.com/company/origintra-exim',
   headOffice: {
     title: 'Origintra Exim Export Desk',
     street: 'Export Trade Corridor',
-    city: 'Ahmedabad / Cochin Hubs',
-    state: 'Gujarat / Kerala',
+    city: 'Sabarkantha / Ahmedabad Hubs',
+    state: 'Gujarat',
     country: 'India',
     postalCode: 'India Export Hub',
     note: 'Visits and estate inspections arranged by prior trade appointment.'

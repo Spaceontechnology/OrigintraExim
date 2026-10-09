@@ -75,66 +75,49 @@ export const GlobalReachPage: React.FC<GlobalReachPageProps> = ({ onNavigate, on
     <div className="bg-white text-[#0F172A]">
       
       {/* Page Hero */}
-      <section className="bg-[#0A1C3E] text-white py-20 sm:py-28">
-        <div className="container-x mx-auto max-w-[1440px]">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+        <div className="container-x mx-auto max-w-[1440px] relative">
           <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#38BDF8]">
+            <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               International Trade Corridors
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
-              From India to Global Markets<span className="text-[#38BDF8]">.</span>
+              From India to Global Markets<span className="text-[#0070E0]">.</span>
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
               Our global market focus: Connecting India’s agricultural heartlands with commercial importers, food manufacturers, and wholesalers across key trade regions.
             </p>
-            <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
-              <button
-                onClick={onOpenQuote}
-                className="btn-pill btn-pill-dark bg-[#0070E0] hover:bg-[#005bb5] text-white px-7 py-3 text-xs sm:text-sm font-semibold flex items-center space-x-2 cursor-pointer shadow-md self-start"
-              >
-                <span>Start a Global Sourcing Conversation</span>
-                <ArrowUpRight className="w-4 h-4 ml-0.5" />
-              </button>
-            </div>
-
-            {/* Accreditations Strip (FSSAI, APEDA, Spice Board, IEC, GST, MSME) */}
-            <div className="pt-3">
-              <div 
-                onClick={() => onNavigate('quality')}
-                className="inline-flex items-center bg-white/95 backdrop-blur-md rounded-2xl py-2 px-4 shadow-xl border border-white/90 gap-4 max-w-full cursor-pointer hover:bg-white transition-all group"
-                title="View Full Government of India Accreditations & Licenses"
-              >
-                <div className="flex items-center space-x-3 sm:space-x-5 overflow-x-auto py-0.5">
-                  <div className="flex items-center space-x-1 shrink-0" title="FSSAI - Food Safety and Standards Authority of India">
-                    <img src="/assets/certificates/fssai.png" alt="FSSAI" className="h-5 sm:h-7 w-auto object-contain transition-transform group-hover:scale-105" />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 font-mono hidden md:inline">FSSAI</span>
-                  </div>
-                  <div className="flex items-center space-x-1 shrink-0" title="APEDA - Agricultural and Processed Food Products Export Development Authority">
-                    <img src="/assets/certificates/apeda.png" alt="APEDA" className="h-6 sm:h-8 w-auto object-contain transition-transform group-hover:scale-105" />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 font-mono hidden md:inline">APEDA</span>
-                  </div>
-                  <div className="flex items-center space-x-1 shrink-0" title="Spices Board India - Ministry of Commerce and Industry">
-                    <img src="/assets/certificates/spices-board.png" alt="Spices Board India" className="h-6 sm:h-8 w-auto object-contain transition-transform group-hover:scale-105" />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 font-mono hidden md:inline">SPICES BOARD</span>
-                  </div>
-                  <div className="flex items-center space-x-1 shrink-0" title="IEC - Import Export Code (DGFT, Govt. of India)">
-                    <img src="/assets/certificates/iec.png" alt="IEC" className="h-6 sm:h-8 w-auto object-contain transition-transform group-hover:scale-105" />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 font-mono hidden md:inline">IEC</span>
-                  </div>
-                  <div className="flex items-center space-x-1 shrink-0" title="GST - Registered Indian Exporter">
-                    <img src="/assets/certificates/gst-transparent.png" alt="GST" className="h-4 sm:h-6 w-auto object-contain transition-transform group-hover:scale-105" />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 font-mono hidden md:inline">GST</span>
-                  </div>
-                  <div className="flex items-center space-x-1 shrink-0" title="MSME - Ministry of Micro, Small and Medium Enterprises">
-                    <img src="/assets/certificates/msme.svg" alt="MSME" className="h-5 sm:h-7 w-auto object-contain transition-transform group-hover:scale-105" />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 font-mono hidden md:inline">MSME</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* Statutory Accreditations Sub-bar */}
+      <div className="bg-white border-b border-slate-200 py-3.5 shadow-2xs">
+        <div className="container-x mx-auto max-w-[1440px] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div 
+            className="flex items-center space-x-3 sm:space-x-5 overflow-x-auto py-1 scrollbar-none cursor-pointer" 
+            onClick={() => onNavigate('quality')}
+            title="View Full Government of India Accreditations & Licenses"
+          >
+            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider shrink-0">Accredited By:</span>
+            <div className="flex items-center space-x-4 shrink-0">
+              <img src="/assets/certificates/fssai.png" alt="FSSAI" className="h-5 sm:h-6 w-auto object-contain" />
+              <img src="/assets/certificates/apeda.png" alt="APEDA" className="h-6 sm:h-7 w-auto object-contain" />
+              <img src="/assets/certificates/spices-board.png" alt="Spices Board" className="h-6 sm:h-7 w-auto object-contain" />
+              <img src="/assets/certificates/iec.png" alt="IEC" className="h-6 sm:h-7 w-auto object-contain" />
+              <img src="/assets/certificates/gst-transparent.png" alt="GST" className="h-4 sm:h-5 w-auto object-contain" />
+              <img src="/assets/certificates/msme.svg" alt="MSME" className="h-5 sm:h-6 w-auto object-contain" />
+            </div>
+          </div>
+          <button
+            onClick={onOpenQuote}
+            className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-5 py-2 text-xs font-semibold shrink-0 cursor-pointer self-start sm:self-auto flex items-center space-x-1"
+          >
+            <span>Start Sourcing Conversation</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </div>
 
       {/* Target Regional Focus Interactive Selector */}
       <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200">

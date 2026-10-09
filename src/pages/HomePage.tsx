@@ -265,63 +265,65 @@ export const HomePage: React.FC<HomePageProps> = ({
               />
             </div>
           ))}
-          {/* Directional enterprise editorial vignette: subtle dark blue/navy gradient keeping text crystal-clear while authentic spices remain vivid */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#071120]/95 via-[#071120]/80 via-45% to-transparent z-[1]" />
+          {/* Directional enterprise editorial gradient: strong dark navy behind text on the left side, smoothly feathering to transparent on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071120] via-[#071120]/90 via-45% to-transparent z-[1]" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#071120]/70 via-transparent to-black/20 z-[1]" />
         </div>
 
         {/* Foreground Content */}
-        <div className="container-x mx-auto max-w-[1440px] relative py-12 sm:py-20 md:py-24 z-10 w-full">
-          <div className="max-w-3xl space-y-4 sm:space-y-6">
+        <div className="container-x mx-auto max-w-[1440px] relative py-14 sm:py-20 md:py-28 z-10 w-full">
+          <div className="max-w-3xl space-y-5 sm:space-y-6">
             
             {/* Animated Text Container with smooth transition */}
             <div className={`transition-all duration-300 ease-out transform ${
               fadeState === 'in' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
-            } space-y-3.5 sm:space-y-4.5`}>
+            } space-y-4 sm:space-y-5`}>
               
-              {/* Eyebrow & Spice Badge */}
+              {/* Sourcing Corridor & Commodity Eyebrow */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center space-x-2 bg-blue-500/20 border border-blue-400/30 text-sky-300 px-3 py-1 rounded-md text-[11px] sm:text-xs font-semibold backdrop-blur-md shadow-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
-                  <span>{currentSlideData.badge}</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-sky-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
+                  {currentSlideData.badge}
                 </span>
-                <span className="text-xs sm:text-sm font-medium text-slate-300 tracking-wide">
+                <span className="text-slate-300 font-light">•</span>
+                <span className="text-xs sm:text-sm font-medium text-slate-200 tracking-wide drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
                   {currentSlideData.eyebrow}
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-bold text-white tracking-tight leading-[1.14]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-semibold text-white tracking-tight leading-[1.14] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 {currentSlideData.headline}
                 <span className="text-[#38BDF8]">.</span>
               </h1>
 
-              {/* Supporting Sub-line */}
-              <p className="text-sm sm:text-base md:text-lg font-medium text-sky-200 leading-snug">
-                {currentSlideData.subline}
-              </p>
-
-              {/* Body Description */}
-              <p className="text-xs sm:text-sm md:text-base text-slate-200 max-w-2xl leading-relaxed font-normal">
+              {/* Body Description & Specifications */}
+              <p className="text-sm sm:text-base md:text-lg text-white/95 leading-relaxed font-normal max-w-2xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
                 {currentSlideData.description}
               </p>
 
-              {/* CTAs (Dynamic matching buttons) */}
-              <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+              {currentSlideData.subline && (
+                <div className="pt-0.5 text-xs sm:text-sm font-mono text-sky-200 flex items-center space-x-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                  <span>{currentSlideData.subline}</span>
+                </div>
+              )}
+
+              {/* CTAs (Executive Symmetrical Action Pair) */}
+              <div className="pt-3 flex flex-wrap items-center gap-3 sm:gap-4">
                 <button
                   onClick={() => handleHeroCta(currentSlideData)}
-                  className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-[#0070E0] hover:bg-[#005bb5] text-white text-xs sm:text-sm font-semibold shadow-lg shadow-blue-900/30 flex items-center space-x-2.5 transition-all cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                  className="btn-pill btn-pill-primary bg-[#0070E0] hover:bg-[#005bb5] text-white px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wide cursor-pointer shadow-md hover:shadow-lg transition-all flex items-center space-x-2"
                 >
-                  <FileText className="w-4 h-4" />
                   <span>{currentSlideData.ctaText}</span>
+                  <ArrowRight className="w-4 h-4 ml-0.5" />
                 </button>
 
                 <button
                   onClick={() => handleSecondaryCta(currentSlideData)}
-                  className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl border border-white/30 hover:border-white/80 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md text-xs sm:text-sm font-semibold transition-all flex items-center space-x-2 cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                  className="btn-pill btn-pill-outline border-white/30 hover:border-white text-white hover:bg-white/10 px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wide cursor-pointer transition-all flex items-center space-x-2"
                 >
                   <span>{currentSlideData.id === 'spices-assortment' ? 'Explore Products' : 'View Specifications'}</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4 text-slate-300" />
                 </button>
               </div>
 
@@ -521,92 +523,108 @@ export const HomePage: React.FC<HomePageProps> = ({
             {featuredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-2xs hover:shadow-lg hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
+                  {/* Clean Commodity Visual Presentation */}
                   <div className="relative aspect-[4/5] overflow-hidden bg-slate-50">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 left-3 bg-[#0A1C3E]/80 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-medium px-2.5 py-1 rounded-md">
-                      {product.origin}
+                    
+                    {/* Category Tag on top right */}
+                    <div className="absolute top-3.5 right-3.5 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-md text-[#0A1C3E] text-[11px] font-bold uppercase tracking-wider shadow-xs border border-white/80">
+                      {product.category || 'Export Spice'}
                     </div>
 
-                    {/* Powder Form Badge */}
-                    {product.powderDetails && (
-                      <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-xs text-[#0A1C3E] text-[10px] font-bold px-2 py-0.5 rounded shadow-xs flex items-center space-x-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0070E0]" />
-                        <span>Powder Form Available</span>
+                    {/* Flagship Badge on top left if applicable */}
+                    {product.isFlagship && (
+                      <div className="absolute top-3.5 left-3.5 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm uppercase tracking-wider">
+                        Flagship
                       </div>
                     )}
                   </div>
 
-                  <div className="p-4 sm:p-6 space-y-2.5 sm:space-y-4">
+                  <div className="p-5 sm:p-6 space-y-3.5">
+                    {/* Origin Belt Eyebrow & Quality Status */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100/90 border border-slate-200/80 text-[11px] font-semibold text-slate-700">
+                        <MapPin className="w-3.5 h-3.5 text-[#0070E0] shrink-0" />
+                        <span className="truncate max-w-[190px]">{product.origin.split('—')[0].trim()}</span>
+                      </div>
+                      <span className="inline-flex items-center text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-blue-50 text-[#0070E0] border border-blue-200/60 shrink-0 font-mono">
+                        Export Grade
+                      </span>
+                    </div>
+
+                    {/* Commodity Title & Botanical Name */}
                     <div>
-                      <h3 className="text-lg sm:text-xl font-display font-semibold text-[#0F172A] group-hover:text-[#0070E0] transition-colors">
-                        {product.name}
-                      </h3>
+                      <a
+                        href={`/products/${product.slug}`}
+                        onClick={(e) => {
+                          if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                            e.preventDefault();
+                            onOpenProductDetail(product);
+                          }
+                        }}
+                        className="group/title block"
+                      >
+                        <h3 className="text-xl font-display font-bold text-[#0A1C3E] group-hover/title:text-[#0070E0] transition-colors leading-snug tracking-tight">
+                          {product.name}
+                        </h3>
+                      </a>
                       {product.botanicalName && (
-                        <p className="text-xs text-slate-500 italic mt-0.5">
-                          {product.botanicalName}
+                        <p className="text-[11px] text-slate-400 mt-0.5 font-sans font-medium italic tracking-wide">
+                          Botanical: <span>{product.botanicalName}</span>
                         </p>
                       )}
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-2">
-                      {product.shortDescription}
+                    {/* Commercial Trade Summary */}
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 min-h-[2.5rem]">
+                      {product.shortDescription || product.tagline}
                     </p>
 
-                    <div>
-                      <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                        Available Forms:
-                      </span>
-                      <div className="flex flex-wrap gap-1.5">
-                        {product.availableForms.slice(0, 2).map((form, idx) => (
-                          <span
-                            key={idx}
-                            className={`text-[11px] sm:text-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md ${
-                              form.toLowerCase().includes('powder')
-                                ? 'bg-blue-50 text-[#0070E0] font-semibold border border-blue-100'
-                                : 'bg-slate-100 text-slate-700'
-                            }`}
-                          >
-                            {form}
-                          </span>
-                        ))}
-                        {product.availableForms.length > 2 && (
-                          <span className="text-[11px] sm:text-xs text-[#0070E0] font-medium self-center pl-1">
-                            +{product.availableForms.length - 2} more
-                          </span>
-                        )}
+                    {/* Trade Specifications Panel */}
+                    <div className="rounded-xl bg-slate-50/90 border border-slate-200/80 p-3 grid grid-cols-2 gap-3 text-xs">
+                      <div className="min-w-0">
+                        <span className="text-slate-400 font-semibold block text-[10px] uppercase tracking-wider font-sans">
+                          Export Forms
+                        </span>
+                        <span className="text-slate-900 font-bold mt-0.5 block truncate text-xs">
+                          {product.availableForms.slice(0, 2).map(f => f.toLowerCase().includes('powder') ? 'Powder' : 'Whole').join(' & ') || 'Whole & Ground'}
+                        </span>
+                      </div>
+                      <div className="min-w-0 border-l border-slate-200/80 pl-3">
+                        <span className="text-slate-400 font-semibold block text-[10px] uppercase tracking-wider font-sans">
+                          Supply Grade
+                        </span>
+                        <span className="text-slate-900 font-bold mt-0.5 block truncate text-xs">
+                          {product.grade ? product.grade.split('·')[0].trim() : 'Export Standard'}
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 sm:p-6 pt-0 border-t border-slate-100 mt-3 sm:mt-4 flex items-center justify-between gap-3">
-                  <a
-                    href={`/products/${product.slug}`}
-                    onClick={(e) => {
-                      if (!e.ctrlKey && !e.metaKey && e.button === 0) {
-                        e.preventDefault();
-                        onOpenProductDetail(product);
-                      }
-                    }}
-                    className="text-xs font-semibold text-slate-700 hover:text-[#0070E0] flex items-center space-x-1 cursor-pointer"
+                {/* Symmetrical Executive Action Pair */}
+                <div className="p-5 sm:p-6 pt-0 border-t border-slate-100 mt-2 flex items-center gap-2.5">
+                  <button
+                    onClick={() => onOpenProductDetail(product)}
+                    className="flex-1 py-2.5 px-3 rounded-xl border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center space-x-1.5 cursor-pointer"
                   >
-                    <span>View Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                    <span>Specifications</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                  </button>
 
                   <button
                     onClick={() => onOpenQuoteWithProduct(product.name)}
-                    className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#0A1C3E] hover:bg-[#0070E0] text-white text-xs font-semibold transition cursor-pointer flex items-center space-x-1"
+                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#0070E0] hover:bg-[#005bb5] text-white text-xs sm:text-sm font-semibold transition-colors flex items-center justify-center space-x-1.5 cursor-pointer shadow-sm hover:shadow"
                   >
-                    <span>Enquire</span>
+                    <span>Request Quote</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -626,36 +644,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             <p className="text-xs text-slate-500 mt-2">
               Browse all 4 categories: Whole Spices (9) • Ground Spices (6) • Sortex Seeds (5) • Blends (7)
             </p>
-          </div>
-
-          {/* Precision Powder Milling Callout */}
-          <div className="mt-14 p-8 rounded-2xl bg-white border border-blue-200/80 shadow-2xs flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center shrink-0">
-                <Layers className="w-6 h-6" />
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center space-x-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">Custom Powder Milling</span>
-                  <span className="text-slate-300">•</span>
-                  <span className="text-xs text-slate-500 font-mono">40 to 120 Mesh</span>
-                </div>
-                <h4 className="text-lg font-bold text-[#0F172A]">
-                  Precision Ground Indian Spice Powders for Commercial Grinders & Brands
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
-                  We supply both whole agricultural crops and laboratory-tested pure spice powders (Red Chilli Powder, Turmeric Powder, Coriander Powder, Cumin Powder, Moringa Leaf Powder) milled under low-temperature controls with airtight moisture-barrier export packing.
-                </p>
-              </div>
-            </div>
-
-            <button
-              onClick={() => onOpenQuoteWithProduct('Custom Spice Powders (Ground Form)')}
-              className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-6 py-3 text-xs font-semibold shrink-0 cursor-pointer flex items-center space-x-1.5 whitespace-nowrap"
-            >
-              <span>Enquire for Powder Form</span>
-              <ArrowUpRight className="w-4 h-4 ml-0.5" />
-            </button>
           </div>
 
         </div>
@@ -1054,47 +1042,6 @@ export const HomePage: React.FC<HomePageProps> = ({
               <span>✓ Responses dispatched within 24-48 business hours</span>
               <span>✓ Direct Indian farmgate sourcing</span>
               <span>✓ Customized container packaging</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 11. CONTACT SUMMARY STRIP */}
-      <section className="py-12 bg-slate-50 border-t border-slate-200">
-        <div className="container-x mx-auto max-w-[1440px]">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-            <div>
-              <h3 className="text-base font-bold text-[#0F172A]">
-                Origintra Exim — Global Trade Desk
-              </h3>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Connecting Indian agricultural sourcing to overseas food industries & distributors.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold">
-              <a
-                href={`mailto:${COMPANY_CONFIG.primaryEmail}`}
-                className="text-[#0070E0] hover:underline"
-              >
-                {COMPANY_CONFIG.primaryEmail}
-              </a>
-              <span className="text-slate-300">•</span>
-              <a
-                href={`tel:${COMPANY_CONFIG.phone}`}
-                className="text-slate-700 hover:text-[#0070E0]"
-              >
-                {COMPANY_CONFIG.phoneDisplay}
-              </a>
-              <span className="text-slate-300">•</span>
-              <a
-                href={COMPANY_CONFIG.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-emerald-600 hover:underline"
-              >
-                WhatsApp Desk
-              </a>
             </div>
           </div>
         </div>
