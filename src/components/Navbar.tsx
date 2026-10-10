@@ -1,5 +1,18 @@
-import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight, ChevronRight, Calendar, Mail, Phone, MapPin, Clock } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+  ChevronRight,
+  ChevronDown,
+  Calendar,
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  BookOpen,
+  ShieldCheck
+} from 'lucide-react';
 import { COMPANY_CONFIG } from '../data/company';
 import { getHref } from '../utils/routes';
 
@@ -9,26 +22,42 @@ interface NavbarProps {
   onOpenQuote: () => void;
 }
 
+// Navabar Fix: keep the sticky header stable, close dropdowns on outside clicks, and preserve responsive navigation behavior.
 export const Navbar: React.FC<NavbarProps> = ({
   currentPage,
   onNavigate,
   onOpenQuote
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mobileAboutExpanded, setMobileAboutExpanded] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const navLinks = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About Us' },
-    { id: 'products', label: 'Products' },
-    { id: 'global-reach', label: 'Global Reach' },
-    { id: 'quality', label: 'Quality & Compliance' },
-    { id: 'meeting', label: 'Meeting' },
-    { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  const handleAboutMouseEnter = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setAboutDropdownOpen(true);
+  };
+
+  const handleAboutMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setAboutDropdownOpen(false);
+    }, 150);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setAboutDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleLinkClick = (id: string) => {
     setMobileMenuOpen(false);
+    setAboutDropdownOpen(false);
     onNavigate(id);
   };
 
@@ -123,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="w-full bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
         <div className="container-x mx-auto max-w-[1440px]">
           <div className="flex h-20 items-center justify-between">
-          
+
           {/* Logo with strict proportion preservation and SEO clean URL */}
           <a
             href={getHref('home')}
@@ -146,28 +175,159 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop Navigation Links (SEO Crawlable Semantic Links) */}
           <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-            {navLinks.map((link) => {
-              const isActive = currentPage === link.id || (link.id === 'products' && currentPage === 'product-detail');
-              return (
-                <a
-                  key={link.id}
-                  href={getHref(link.id)}
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey && e.button === 0) {
-                      e.preventDefault();
-                      handleLinkClick(link.id);
-                    }
-                  }}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
-                    isActive
-                      ? 'text-[#0070E0] font-semibold bg-blue-50/60'
-                      : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-100/70'
-                  }`}
+
+            {/* 1. Home */}
+            <a
+              href={getHref('home')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('home');
+                }
+              }}
+              className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                currentPage === 'home'
+                  ? 'text-[#0070E0] font-semibold bg-blue-50/60'
+                  : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-100/70'
+              }`}
+            >
+              Home
+            </a>
+
+            {/* 2. About (DropDown: Our Story, Certificates) */}
+            <div
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={handleAboutMouseEnter}
+              onMouseLeave={handleAboutMouseLeave}
+            >
+              <button
+                type="button"
+                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                aria-expanded={aboutDropdownOpen}
+                aria-haspopup="true"
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer flex items-center space-x-1.5 ${
+                  currentPage === 'about' || currentPage === 'quality'
+                    ? 'text-[#0070E0] font-semibold bg-blue-50/60'
+                    : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-100/70'
+                }`}
+              >
+                <span>About</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180 text-[#0070E0]' : 'text-slate-400'}`} />
+              </button>
+
+              {/* Dropdown Menu */}
+              {aboutDropdownOpen && (
+                <div
+                  className="absolute left-0 top-full pt-2 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  onMouseEnter={handleAboutMouseEnter}
+                  onMouseLeave={handleAboutMouseLeave}
                 >
-                  {link.label}
-                </a>
-              );
-            })}
+                  <div className="w-56 bg-white rounded-xl shadow-xl border border-slate-200/90 py-1.5 backdrop-blur-md">
+                    {/* Our Story */}
+                    <a
+                      href={getHref('about')}
+                      onClick={(e) => {
+                        if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                          e.preventDefault();
+                          setAboutDropdownOpen(false);
+                          handleLinkClick('about');
+                        }
+                      }}
+                      className={`flex items-center space-x-2.5 px-4 py-2.5 text-sm transition-colors cursor-pointer ${
+                        currentPage === 'about'
+                          ? 'text-[#0070E0] font-semibold bg-blue-50/70'
+                          : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-50'
+                      }`}
+                    >
+                      <BookOpen className={`w-4 h-4 shrink-0 ${currentPage === 'about' ? 'text-[#0070E0]' : 'text-slate-400'}`} />
+                      <div>
+                        <div className="font-medium">Our Story</div>
+                        <div className="text-[11px] text-slate-400 font-normal">Founding story & ethos</div>
+                      </div>
+                    </a>
+
+                    {/* Certificates */}
+                    <a
+                      href={getHref('quality')}
+                      onClick={(e) => {
+                        if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                          e.preventDefault();
+                          setAboutDropdownOpen(false);
+                          handleLinkClick('quality');
+                        }
+                      }}
+                      className={`flex items-center space-x-2.5 px-4 py-2.5 text-sm transition-colors cursor-pointer ${
+                        currentPage === 'quality'
+                          ? 'text-[#0070E0] font-semibold bg-blue-50/70'
+                          : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-50'
+                      }`}
+                    >
+                      <ShieldCheck className={`w-4 h-4 shrink-0 ${currentPage === 'quality' ? 'text-[#0070E0]' : 'text-slate-400'}`} />
+                      <div>
+                        <div className="font-medium">Certificates</div>
+                        <div className="text-[11px] text-slate-400 font-normal">APEDA, FSSAI, Spice Board</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 3. Product */}
+            <a
+              href={getHref('products')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('products');
+                }
+              }}
+              className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                currentPage === 'products' || currentPage === 'product-detail'
+                  ? 'text-[#0070E0] font-semibold bg-blue-50/60'
+                  : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-100/70'
+              }`}
+            >
+              Product
+            </a>
+
+            {/* 4. Blog */}
+            <a
+              href={getHref('blog')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('blog');
+                }
+              }}
+              className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                currentPage === 'blog'
+                  ? 'text-[#0070E0] font-semibold bg-blue-50/60'
+                  : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-100/70'
+              }`}
+            >
+              Blog
+            </a>
+
+            {/* 5. Contact */}
+            <a
+              href={getHref('contact')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('contact');
+                }
+              }}
+              className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
+                currentPage === 'contact'
+                  ? 'text-[#0070E0] font-semibold bg-blue-50/60'
+                  : 'text-slate-700 hover:text-[#0A1C3E] hover:bg-slate-100/70'
+              }`}
+            >
+              Contact
+            </a>
+
           </nav>
 
           {/* Prominent CTA: Schedule Meeting & Request a Quote */}
@@ -222,29 +382,144 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="container-x mx-auto px-4 py-6 space-y-1">
-            {navLinks.map((link) => {
-              const isActive = currentPage === link.id || (link.id === 'products' && currentPage === 'product-detail');
-              return (
-                <a
-                  key={link.id}
-                  href={getHref(link.id)}
-                  onClick={(e) => {
-                    if (!e.ctrlKey && !e.metaKey && e.button === 0) {
-                      e.preventDefault();
-                      handleLinkClick(link.id);
-                    }
-                  }}
-                  className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition ${
-                    isActive
-                      ? 'bg-blue-50 text-[#0070E0] font-semibold'
-                      : 'text-slate-700 hover:bg-slate-50'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#0070E0]' : 'text-slate-400'}`} />
-                </a>
-              );
-            })}
+
+            {/* 1. Home */}
+            <a
+              href={getHref('home')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('home');
+                }
+              }}
+              className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition ${
+                currentPage === 'home'
+                  ? 'bg-blue-50 text-[#0070E0] font-semibold'
+                  : 'text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <span>Home</span>
+              <ChevronRight className={`w-4 h-4 ${currentPage === 'home' ? 'text-[#0070E0]' : 'text-slate-400'}`} />
+            </a>
+
+            {/* 2. About (Dropdown accordion with Our Story and Certificates) */}
+            <div className="rounded-lg overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setMobileAboutExpanded(!mobileAboutExpanded)}
+                className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition cursor-pointer ${
+                  currentPage === 'about' || currentPage === 'quality'
+                    ? 'bg-blue-50 text-[#0070E0] font-semibold'
+                    : 'text-slate-700 hover:bg-slate-50'
+                }`}
+              >
+                <span>About</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAboutExpanded ? 'rotate-180 text-[#0070E0]' : 'text-slate-400'}`} />
+              </button>
+
+              {mobileAboutExpanded && (
+                <div className="pl-4 pr-1 py-1 space-y-1 bg-slate-50/70 rounded-lg mt-1 border-l-2 border-[#0070E0]/30 ml-2 animate-in fade-in duration-150">
+                  <a
+                    href={getHref('about')}
+                    onClick={(e) => {
+                      if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                        e.preventDefault();
+                        handleLinkClick('about');
+                      }
+                    }}
+                    className={`flex items-center justify-between w-full px-3 py-2.5 rounded-md text-xs sm:text-sm font-medium transition ${
+                      currentPage === 'about'
+                        ? 'text-[#0070E0] font-semibold bg-blue-50'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <BookOpen className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Our Story</span>
+                    </div>
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                  </a>
+
+                  <a
+                    href={getHref('quality')}
+                    onClick={(e) => {
+                      if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                        e.preventDefault();
+                        handleLinkClick('quality');
+                      }
+                    }}
+                    className={`flex items-center justify-between w-full px-3 py-2.5 rounded-md text-xs sm:text-sm font-medium transition ${
+                      currentPage === 'quality'
+                        ? 'text-[#0070E0] font-semibold bg-blue-50'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Certificates</span>
+                    </div>
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* 3. Product */}
+            <a
+              href={getHref('products')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('products');
+                }
+              }}
+              className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition ${
+                currentPage === 'products' || currentPage === 'product-detail'
+                  ? 'bg-blue-50 text-[#0070E0] font-semibold'
+                  : 'text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <span>Product</span>
+              <ChevronRight className={`w-4 h-4 ${currentPage === 'products' || currentPage === 'product-detail' ? 'text-[#0070E0]' : 'text-slate-400'}`} />
+            </a>
+
+            {/* 4. Blog */}
+            <a
+              href={getHref('blog')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('blog');
+                }
+              }}
+              className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition ${
+                currentPage === 'blog'
+                  ? 'bg-blue-50 text-[#0070E0] font-semibold'
+                  : 'text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <span>Blog</span>
+              <ChevronRight className={`w-4 h-4 ${currentPage === 'blog' ? 'text-[#0070E0]' : 'text-slate-400'}`} />
+            </a>
+
+            {/* 5. Contact */}
+            <a
+              href={getHref('contact')}
+              onClick={(e) => {
+                if (!e.ctrlKey && !e.metaKey && e.button === 0) {
+                  e.preventDefault();
+                  handleLinkClick('contact');
+                }
+              }}
+              className={`flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium transition ${
+                currentPage === 'contact'
+                  ? 'bg-blue-50 text-[#0070E0] font-semibold'
+                  : 'text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              <span>Contact</span>
+              <ChevronRight className={`w-4 h-4 ${currentPage === 'contact' ? 'text-[#0070E0]' : 'text-slate-400'}`} />
+            </a>
 
             <div className="pt-4 mt-2 border-t border-slate-100 space-y-2">
               <button

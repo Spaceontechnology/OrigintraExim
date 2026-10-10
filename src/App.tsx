@@ -265,7 +265,7 @@ export const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#0070E0] selection:text-white antialiased">
       
-      {/* Sticky Corporate Navbar (hidden on admin page) */}
+      {/* Navbar Fix: keep the sticky corporate navbar visible while hiding it on the admin page. */}
       {currentPage !== 'admin' && (
         <Navbar
           currentPage={currentPage}
