@@ -160,11 +160,11 @@ export const LegalModal: React.FC<LegalModalProps> = ({
             </div>
           ))}
 
-          <div className="pt-4 border-t border-slate-100 flex justify-between items-center text-xs text-slate-500">
+          <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-500">
             <span>Direct questions to: {COMPANY_CONFIG.primaryEmail}</span>
             <button
               onClick={onClose}
-              className="px-5 py-2 rounded-full bg-[#0A1C3E] hover:bg-[#0070E0] text-white font-semibold transition cursor-pointer"
+              className="px-5 py-2 rounded-full bg-[#0A1C3E] hover:bg-[#0070E0] text-white font-semibold transition cursor-pointer self-start sm:self-auto"
             >
               Close
             </button>

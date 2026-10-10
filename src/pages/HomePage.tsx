@@ -50,7 +50,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       headline: 'Connecting India’s Finest Spices to the World',
       subline: 'Whole Seed Spices, Pure Ground Powders & Custom Sourcing',
       description: 'From prime whole pods and Sortex-cleaned seeds to ultra-fine pulverized powders, Origintra Exim connects international importers, food processors, and re-packers directly to certified Indian agricultural belts.',
-      ctaText: 'Request a Quote'
+      mobileDescription: 'Direct farmgate sourcing of export-grade whole spices and pure ground powders.',
+      ctaText: 'Request a Quote',
+      mobileCtaText: 'Get Quote',
+      mobileSecondaryText: 'Explore'
     },
     {
       id: 'red-chilli',
@@ -61,7 +64,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       headline: 'Premium Indian Dried Red Chilli & Pure Powder',
       subline: 'S17 Teja, Sanam S4, Byadgi & 334 Varieties with Standardized SHU Heat',
       description: 'Machine-stemmed whole red chillies and vibratory-sifted powders milled under low temperature controls. Guaranteed negative for synthetic Sudan dyes and fully tested for Aflatoxin and pesticide MRL compliance.',
-      ctaText: 'Enquire for Red Chilli'
+      mobileDescription: 'Machine-stemmed chillies & pure powders with certified SHU heat and zero Sudan dye.',
+      ctaText: 'Enquire for Red Chilli',
+      mobileCtaText: 'Enquire Now',
+      mobileSecondaryText: 'View Specs'
     },
     {
       id: 'turmeric',
@@ -72,7 +78,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       headline: 'Curcumin-Rich Indian Turmeric Fingers & Powders',
       subline: 'Double-Polished Whole Fingers & Pure Golden Milled Powders',
       description: 'Harvested from premier turmeric cultivation hubs in Southern and Central India. High natural curcumin concentration, zero lead chromate, and packed in multi-wall moisture-barrier export sacks.',
-      ctaText: 'Enquire for Turmeric'
+      mobileDescription: 'High-curcumin double-polished fingers and pure golden milled turmeric powders.',
+      ctaText: 'Enquire for Turmeric',
+      mobileCtaText: 'Enquire Now',
+      mobileSecondaryText: 'View Specs'
     },
     {
       id: 'cumin',
@@ -83,7 +92,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       headline: 'Sortex-Cleaned Machine Purity Indian Cumin Seeds',
       subline: '99% to 99.5% Purity Singapore & European Machine Cleaned Grades',
       description: 'Direct procurement from primary farm yards in Unjha and Western India. Free from foreign seeds and dirt with moisture below 8-9% and high volatile essential oil retention for extractors and blenders.',
-      ctaText: 'Enquire for Cumin'
+      mobileDescription: '99% to 99.5% Sortex machine-cleaned cumin seeds direct from Unjha Mandi.',
+      ctaText: 'Enquire for Cumin',
+      mobileCtaText: 'Enquire Now',
+      mobileSecondaryText: 'View Specs'
     },
     {
       id: 'coriander',
@@ -94,7 +106,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       headline: 'Eagle & Scooter Quality Green Coriander Seeds',
       subline: 'Aromatic Whole Round, Split (Dal), & Fragrant Ground Powders',
       description: 'Sun-cured golden-green coriander seeds with sweet citrusy aroma. Available in whole round, split, and ultra-fine ground powder tailored for commercial spice seasoning mixes and curry powders.',
-      ctaText: 'Enquire for Coriander'
+      mobileDescription: 'Eagle & Scooter grade aromatic whole seeds, split dal, and pure ground powders.',
+      ctaText: 'Enquire for Coriander',
+      mobileCtaText: 'Enquire Now',
+      mobileSecondaryText: 'View Specs'
     }
   ];
 
@@ -246,7 +261,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="bg-white text-[#0F172A]">
       
       {/* 1. HERO SECTION (Dynamic Spice Image & Matching Content Carousel) */}
-      <section className="relative overflow-hidden min-h-[600px] sm:min-h-[640px] lg:min-h-[700px] flex items-center text-white">
+      <section className="relative overflow-hidden min-h-[500px] sm:min-h-[580px] md:min-h-[640px] lg:min-h-[700px] flex items-center text-white">
         {/* Full-bleed authentic Indian spice background slides */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {heroSlides.map((slide, idx) => (
@@ -266,64 +281,74 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
           ))}
           {/* Directional enterprise editorial gradient: strong dark navy behind text on the left side, smoothly feathering to transparent on the right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#071120] via-[#071120]/90 via-45% to-transparent z-[1]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071120]/70 via-transparent to-black/20 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071120] via-[#071120]/90 sm:via-[#071120]/90 via-65% sm:via-50% lg:via-45% to-transparent z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071120]/80 via-transparent to-black/30 z-[1]" />
         </div>
 
         {/* Foreground Content */}
-        <div className="container-x mx-auto max-w-[1440px] relative py-14 sm:py-20 md:py-28 z-10 w-full">
-          <div className="max-w-3xl space-y-5 sm:space-y-6">
+        <div className="container-x mx-auto max-w-[1440px] relative py-8 sm:py-16 md:py-24 lg:py-28 z-10 w-full">
+          <div className="max-w-xl sm:max-w-2xl lg:max-w-3xl space-y-3 sm:space-y-4 md:space-y-6">
             
             {/* Animated Text Container with smooth transition */}
             <div className={`transition-all duration-300 ease-out transform ${
               fadeState === 'in' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
-            } space-y-4 sm:space-y-5`}>
+            } space-y-3 sm:space-y-4 md:space-y-5`}>
               
               {/* Sourcing Corridor & Commodity Eyebrow */}
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="text-xs font-bold uppercase tracking-wider text-sky-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2.5">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
                   {currentSlideData.badge}
                 </span>
-                <span className="text-slate-300 font-light">•</span>
-                <span className="text-xs sm:text-sm font-medium text-slate-200 tracking-wide drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
+                <span className="hidden sm:inline text-slate-300 font-light">•</span>
+                <span className="hidden sm:inline text-xs sm:text-sm font-medium text-slate-200 tracking-wide drop-shadow-[0_1px_3px_rgba(0,0,0,0.85)]">
                   {currentSlideData.eyebrow}
                 </span>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-semibold text-white tracking-tight leading-[1.14] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              {/* Main Headline - fluid typography curve across Mobile, Tablet, and Desktop */}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.25rem] font-display font-semibold text-white tracking-tight leading-tight sm:leading-[1.16] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] max-w-xl sm:max-w-none">
                 {currentSlideData.headline}
                 <span className="text-[#38BDF8]">.</span>
               </h1>
 
-              {/* Body Description & Specifications */}
-              <p className="text-sm sm:text-base md:text-lg text-white/95 leading-relaxed font-normal max-w-2xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+              {/* Body Description: Streamlined concise text on mobile, rich technical brief on tablet and desktop */}
+              <p className="sm:hidden text-xs text-slate-200/90 leading-relaxed font-normal max-w-sm drop-shadow-[0_2px_5px_rgba(0,0,0,0.9)]">
+                {currentSlideData.mobileDescription}
+              </p>
+              <p className="hidden sm:block text-sm sm:text-base md:text-base lg:text-lg text-white/95 leading-relaxed font-normal max-w-xl lg:max-w-2xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
                 {currentSlideData.description}
               </p>
 
+              {/* Technical Specifications Subline (Desktop / Tablet) */}
               {currentSlideData.subline && (
-                <div className="pt-0.5 text-xs sm:text-sm font-mono text-sky-200 flex items-center space-x-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
-                  <span>{currentSlideData.subline}</span>
+                <div className="hidden sm:flex pt-0.5 text-xs sm:text-sm font-mono text-sky-200 items-center space-x-2 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] shrink-0" />
+                  <span className="truncate sm:whitespace-normal">{currentSlideData.subline}</span>
                 </div>
               )}
 
-              {/* CTAs (Executive Symmetrical Action Pair) */}
-              <div className="pt-3 flex flex-wrap items-center gap-3 sm:gap-4">
+              {/* CTAs (Executive Symmetrical Action Pair - Responsive wrapping and sizing) */}
+              <div className="pt-1.5 sm:pt-2 md:pt-3 flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
                 <button
                   onClick={() => handleHeroCta(currentSlideData)}
-                  className="btn-pill btn-pill-primary bg-[#0070E0] hover:bg-[#005bb5] text-white px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wide cursor-pointer shadow-md hover:shadow-lg transition-all flex items-center space-x-2"
+                  className="btn-pill btn-pill-primary bg-[#0070E0] hover:bg-[#005bb5] text-white px-3.5 sm:px-5 md:px-7 py-2 sm:py-2.5 md:py-3.5 text-xs sm:text-sm font-semibold tracking-wide cursor-pointer shadow-md hover:shadow-lg transition-all flex items-center space-x-1.5 sm:space-x-2 shrink-0"
                 >
-                  <span>{currentSlideData.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 ml-0.5" />
+                  <span className="hidden sm:inline">{currentSlideData.ctaText}</span>
+                  <span className="sm:hidden">{currentSlideData.mobileCtaText}</span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5" />
                 </button>
 
                 <button
                   onClick={() => handleSecondaryCta(currentSlideData)}
-                  className="btn-pill btn-pill-outline border-white/30 hover:border-white text-white hover:bg-white/10 px-7 py-3.5 text-xs sm:text-sm font-semibold tracking-wide cursor-pointer transition-all flex items-center space-x-2"
+                  className="btn-pill btn-pill-outline border-white/30 hover:border-white text-white hover:bg-white/10 px-3.5 sm:px-5 md:px-7 py-2 sm:py-2.5 md:py-3.5 text-xs sm:text-sm font-semibold tracking-wide cursor-pointer transition-all flex items-center space-x-1.5 sm:space-x-2 shrink-0"
                 >
-                  <span>{currentSlideData.id === 'spices-assortment' ? 'Explore Products' : 'View Specifications'}</span>
-                  <ArrowUpRight className="w-4 h-4 text-slate-300" />
+                  <span className="hidden sm:inline">
+                    {currentSlideData.id === 'spices-assortment' ? 'Explore Products' : 'View Specifications'}
+                  </span>
+                  <span className="sm:hidden">
+                    {currentSlideData.mobileSecondaryText}
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-300" />
                 </button>
               </div>
 
@@ -347,7 +372,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         {/* Floating Slide Navigation Controls on Tablet / Desktop */}
-        <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-20 hidden sm:flex items-center space-x-2.5 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-xl">
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 z-20 hidden sm:flex items-center space-x-2.5 bg-black/45 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-xl">
           <button
             onClick={() => goToSlide((currentHeroSlide - 1 + heroSlides.length) % heroSlides.length)}
             className="p-1 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"

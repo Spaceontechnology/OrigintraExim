@@ -75,16 +75,16 @@ export const GlobalReachPage: React.FC<GlobalReachPageProps> = ({ onNavigate, on
     <div className="bg-white text-[#0F172A]">
       
       {/* Page Hero */}
-      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-12 sm:py-20 md:py-28">
         <div className="container-x mx-auto max-w-[1440px] relative">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               International Trade Corridors
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
               From India to Global Markets<span className="text-[#0070E0]">.</span>
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed pt-1 sm:pt-2">
               Our global market focus: Connecting India’s agricultural heartlands with commercial importers, food manufacturers, and wholesalers across key trade regions.
             </p>
           </div>
@@ -120,17 +120,17 @@ export const GlobalReachPage: React.FC<GlobalReachPageProps> = ({ onNavigate, on
       </div>
 
       {/* Target Regional Focus Interactive Selector */}
-      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-slate-50 border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
           
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Market Focus
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               Markets We Aim to Serve<span className="text-[#0070E0]">.</span>
             </h2>
-            <p className="text-base text-slate-600 mt-3">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 sm:mt-3">
               We structure our export preparations around destination market food regulations, consumer preferences, and container logistics.
             </p>
           </div>
@@ -202,11 +202,11 @@ export const GlobalReachPage: React.FC<GlobalReachPageProps> = ({ onNavigate, on
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <span className="text-xs text-slate-400">Customs documentation tailored to regional standards</span>
                 <button
                   onClick={onOpenQuote}
-                  className="px-5 py-2.5 rounded-full bg-[#0A1C3E] hover:bg-[#0070E0] text-white text-xs font-semibold transition cursor-pointer flex items-center space-x-1"
+                  className="px-5 py-2.5 rounded-full bg-[#0A1C3E] hover:bg-[#0070E0] text-white text-xs font-semibold transition cursor-pointer flex items-center space-x-1 self-start sm:self-auto"
                 >
                   <span>Enquire for this Market</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -220,17 +220,17 @@ export const GlobalReachPage: React.FC<GlobalReachPageProps> = ({ onNavigate, on
       </section>
 
       {/* Gateway Ports in India */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-white border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
           
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Maritime Infrastructure
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               Indian Gateway Ports & Container Clearances<span className="text-[#0070E0]">.</span>
             </h2>
-            <p className="text-base text-slate-600 mt-3">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 sm:mt-3">
               Direct containerized sea freight links from India's most modern maritime infrastructure to international hub ports.
             </p>
           </div>

@@ -188,18 +188,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Mobile Hamburger Button & Quick CTA */}
-          <div className="lg:hidden flex items-center space-x-2">
+          {/* Mobile/Tablet Controls & Quick CTAs */}
+          <div className="lg:hidden flex items-center space-x-2 sm:space-x-3">
             <button
               onClick={() => handleLinkClick('meeting')}
-              className="sm:hidden text-xs bg-[#0070E0] text-white px-3 py-1.5 rounded-lg font-medium flex items-center space-x-1"
+              className="text-xs bg-[#0070E0] hover:bg-[#005bb5] text-white px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg font-medium flex items-center space-x-1 sm:space-x-1.5 transition-colors cursor-pointer shadow-xs"
             >
-              <Calendar className="w-3 h-3" />
-              <span>Meeting</span>
+              <Calendar className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Schedule Meeting</span>
+              <span className="sm:hidden">Meeting</span>
+            </button>
+            <button
+              onClick={onOpenQuote}
+              className="hidden sm:flex text-xs border border-slate-300 hover:border-[#0A1C3E] text-slate-700 hover:text-[#0A1C3E] px-3 py-2 rounded-lg font-medium items-center space-x-1 transition-colors cursor-pointer"
+            >
+              <span>Quote</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-500" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 text-slate-700 hover:text-[#0A1C3E] rounded-lg border border-slate-200 bg-white"
+              className="p-2 sm:p-2.5 text-slate-700 hover:text-[#0A1C3E] rounded-lg border border-slate-200 bg-white cursor-pointer transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

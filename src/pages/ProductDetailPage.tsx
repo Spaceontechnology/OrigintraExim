@@ -130,15 +130,16 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => onOpenQuoteWithProduct(product.name)}
-                  className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-7 py-3 text-xs sm:text-sm font-semibold shadow-md flex items-center space-x-2 cursor-pointer"
+                  className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-4 sm:px-7 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold shadow-md flex items-center space-x-1.5 sm:space-x-2 cursor-pointer"
                 >
-                  <span>Request a Quote for {product.name}</span>
+                  <span className="hidden sm:inline">Request a Quote for {product.name}</span>
+                  <span className="sm:hidden">Request a Quote</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
 
                 <button
                   onClick={onBack}
-                  className="btn-pill btn-pill-outline border-slate-300 text-slate-700 hover:text-[#0A1C3E] px-5 py-3 text-xs sm:text-sm font-semibold flex items-center space-x-2 cursor-pointer"
+                  className="btn-pill btn-pill-outline border-slate-300 text-slate-700 hover:text-[#0A1C3E] px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold flex items-center space-x-1.5 sm:space-x-2 cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4 mr-0.5" />
                   <span>Back to Catalog</span>
@@ -444,10 +445,11 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
           <div className="pt-2">
             <button
               onClick={() => onOpenQuoteWithProduct(product.name)}
-              className="btn-pill btn-pill-dark bg-[#0070E0] hover:bg-[#005bb5] text-white px-8 py-3.5 text-sm font-semibold shadow-md flex items-center space-x-2 mx-auto cursor-pointer"
+              className="btn-pill btn-pill-dark bg-[#0070E0] hover:bg-[#005bb5] text-white px-5 sm:px-8 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold shadow-md flex items-center space-x-1.5 sm:space-x-2 mx-auto cursor-pointer"
             >
-              <span>Request Quote for {product.name}</span>
-              <ArrowUpRight className="w-4 h-4 ml-1" />
+              <span className="hidden sm:inline">Request Quote for {product.name}</span>
+              <span className="sm:hidden">Request Quote</span>
+              <ArrowUpRight className="w-4 h-4 ml-0.5" />
             </button>
           </div>
         </div>

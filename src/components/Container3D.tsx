@@ -596,44 +596,47 @@ export const Container3D: React.FC<Container3DProps> = ({ onOpenQuote }) => {
           />
 
           {/* Bottom Floating 3D Control Console */}
-          <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-3 pointer-events-none">
+          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-20 flex flex-wrap items-center justify-between gap-2 sm:gap-3 pointer-events-none">
             
             {/* Control Modes */}
-            <div className="flex items-center space-x-2 bg-[#0A1C3E]/95 backdrop-blur-md p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
+            <div className="flex items-center space-x-1 sm:space-x-2 bg-[#0A1C3E]/95 backdrop-blur-md p-1 sm:p-1.5 rounded-xl border border-slate-700 shadow-xl pointer-events-auto">
               <button
                 onClick={() => setAnimationMode('move')}
-                className={`px-3.5 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-bold flex items-center space-x-1 sm:space-x-1.5 transition cursor-pointer ${
                   animationMode === 'move'
                     ? 'bg-[#0070E0] text-white shadow-sm'
                     : 'text-slate-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <Ship className="w-3.5 h-3.5" />
-                <span>Ocean Sail / Waves</span>
+                <span className="hidden sm:inline">Ocean Sail / Waves</span>
+                <span className="sm:hidden">Sail</span>
               </button>
 
               <button
                 onClick={() => setAnimationMode('open')}
-                className={`px-3.5 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-bold flex items-center space-x-1 sm:space-x-1.5 transition cursor-pointer ${
                   animationMode === 'open'
                     ? 'bg-[#0070E0] text-white shadow-sm'
                     : 'text-slate-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <Box className="w-3.5 h-3.5" />
-                <span>Open Doors & Cargo</span>
+                <span className="hidden sm:inline">Open Doors & Cargo</span>
+                <span className="sm:hidden">Doors</span>
               </button>
 
               <button
                 onClick={() => setAnimationMode('rotate')}
-                className={`px-3.5 py-2 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                className={`px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-bold flex items-center space-x-1 sm:space-x-1.5 transition cursor-pointer ${
                   animationMode === 'rotate'
                     ? 'bg-[#0070E0] text-white shadow-sm'
                     : 'text-slate-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <RotateCw className="w-3.5 h-3.5" />
-                <span>360° Turntable</span>
+                <span className="hidden sm:inline">360° Turntable</span>
+                <span className="sm:hidden">360°</span>
               </button>
             </div>
 
@@ -641,9 +644,10 @@ export const Container3D: React.FC<Container3DProps> = ({ onOpenQuote }) => {
             <div className="pointer-events-auto flex items-center space-x-2">
               <button
                 onClick={onOpenQuote}
-                className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-lg transition flex items-center space-x-1.5"
+                className="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-lg transition flex items-center space-x-1 sm:space-x-1.5 cursor-pointer"
               >
-                <span>Book This Container Cargo</span>
+                <span className="hidden sm:inline">Book This Container Cargo</span>
+                <span className="sm:hidden">Book Cargo</span>
                 <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>

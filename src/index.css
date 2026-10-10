@@ -49,13 +49,25 @@
 /* Luxury Editorial Container */
 .container-x {
   width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 480px) {
+  .container-x {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 @media (min-width: 768px) {
   .container-x {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-x {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
   }
 }
 @media (min-width: 1280px) {

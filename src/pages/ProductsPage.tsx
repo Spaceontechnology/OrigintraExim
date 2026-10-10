@@ -80,16 +80,16 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     <div className="bg-white text-[#0F172A] min-h-[70vh]">
       
       {/* 1. Page Hero */}
-      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-12 sm:py-20 md:py-28">
         <div className="container-x mx-auto max-w-[1440px] relative">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               Complete Export Portfolio • {products.length} Indian Spice Varieties
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
               Export Spices, Seeds & Masala Blends<span className="text-[#0070E0]">.</span>
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed pt-1 sm:pt-2">
               Directly sourced from contracted regional farms across India. Available in whole harvest grades, sortex-cleaned seeds, and mill-controlled powders for international food manufacturers, spice grinders, and distributors.
             </p>
           </div>
@@ -97,7 +97,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
       </section>
 
       {/* 2. Filter and Search Bar (Sticky) */}
-      <section className="border-b border-slate-200 bg-white/95 sticky top-20 z-20 backdrop-blur-md py-4 shadow-2xs">
+      <section className="border-b border-slate-200 bg-white/95 sticky top-[108px] sm:top-[114px] lg:top-20 z-20 backdrop-blur-md py-3 sm:py-4 shadow-2xs">
         <div className="container-x mx-auto max-w-[1440px] space-y-3.5">
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

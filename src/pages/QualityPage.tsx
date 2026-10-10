@@ -92,16 +92,16 @@ export const QualityPage: React.FC<QualityPageProps> = ({ onNavigate, onOpenQuot
     <div className="bg-white text-[#0F172A]">
       
       {/* Page Hero */}
-      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-12 sm:py-20 md:py-28">
         <div className="container-x mx-auto max-w-[1440px] relative">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               Standards & Compliance
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
               Quality Is Part of Every Shipment<span className="text-[#0070E0]">.</span>
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed pt-1 sm:pt-2">
               Origintra focuses on responsible sourcing, product evaluation, proper documentation and export-ready packaging.
             </p>
           </div>
@@ -109,21 +109,21 @@ export const QualityPage: React.FC<QualityPageProps> = ({ onNavigate, onOpenQuot
       </section>
 
       {/* Official Policy Statement (Section 13 Compliance) */}
-      <section className="bg-slate-50 border-b border-slate-200 py-12">
+      <section className="bg-slate-50 border-b border-slate-200 py-8 sm:py-12">
         <div className="container-x mx-auto max-w-[1440px]">
-          <div className="p-8 rounded-2xl bg-white border border-blue-200 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-start space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-7 h-7" />
+          <div className="p-5 sm:p-8 rounded-2xl bg-white border border-blue-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
+            <div className="flex items-start space-x-3.5 sm:space-x-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-lg font-bold text-[#0F172A]">
+                <h3 className="text-base sm:text-lg font-bold text-[#0F172A]">
                   Documentation & Certification Policy
                 </h3>
-                <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
                   {COMPANY_CONFIG.complianceStatement}
                 </p>
-                <p className="text-xs text-slate-500 pt-1">
+                <p className="text-[11px] sm:text-xs text-slate-500 pt-1">
                   We believe in authentic commercial trade: certificates and laboratory test parameters are issued per actual product lot and verified destination import mandates.
                 </p>
               </div>
@@ -131,7 +131,7 @@ export const QualityPage: React.FC<QualityPageProps> = ({ onNavigate, onOpenQuot
 
             <button
               onClick={onOpenQuote}
-              className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-6 py-3 text-xs font-semibold shrink-0 cursor-pointer"
+              className="btn-pill btn-pill-dark bg-[#0A1C3E] hover:bg-[#0070E0] text-white px-5 sm:px-6 py-2.5 sm:py-3 text-xs font-semibold shrink-0 cursor-pointer self-start md:self-auto"
             >
               <span>Enquire Specifications</span>
             </button>
@@ -140,13 +140,13 @@ export const QualityPage: React.FC<QualityPageProps> = ({ onNavigate, onOpenQuot
       </section>
 
       {/* Statutory Export Accreditations & Registrations (APEDA, FSSAI, GST, IEC, Spices Board) */}
-      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-24 bg-white border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
-          <div className="max-w-3xl mb-12">
+          <div className="max-w-3xl mb-10 sm:mb-12">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Statutory Compliance & Legal Trade
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               Export Registrations & Certifications<span className="text-[#0070E0]">.</span>
             </h2>
             <p className="text-base text-slate-600 mt-3">
@@ -217,17 +217,17 @@ export const QualityPage: React.FC<QualityPageProps> = ({ onNavigate, onOpenQuot
       </section>
 
       {/* The 6 Quality Pillars */}
-      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-slate-50 border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
           
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Framework
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               Our 6-Pillar Quality Protocol<span className="text-[#0070E0]">.</span>
             </h2>
-            <p className="text-base text-slate-600 mt-3">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 sm:mt-3">
               From the initial mandi lot selection to container door sealing, every phase is guided by defined criteria.
             </p>
           </div>

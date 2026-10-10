@@ -257,16 +257,16 @@ export const BlogPage: React.FC<BlogPageProps> = ({
     <div className="bg-white text-[#0F172A] min-h-[70vh]">
       
       {/* Blog Page Hero */}
-      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-12 sm:py-20 md:py-28">
         <div className="container-x mx-auto max-w-[1440px] relative">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               Trade Intelligence & Knowledge
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
               Origintra Trade Insights<span className="text-[#0070E0]">.</span>
             </h1>
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed pt-1 sm:pt-2">
               Practical market analysis, crop harvest perspectives, and regulatory export documentation guides for global spice importers.
             </p>
           </div>
@@ -274,7 +274,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({
       </section>
 
       {/* Filter and Search Bar */}
-      <section className="border-b border-slate-200 bg-slate-50/80 sticky top-20 z-20 backdrop-blur-md py-4">
+      <section className="border-b border-slate-200 bg-slate-50/80 sticky top-[108px] sm:top-[114px] lg:top-20 z-20 backdrop-blur-md py-3 sm:py-4">
         <div className="container-x mx-auto max-w-[1440px] flex flex-col md:flex-row md:items-center justify-between gap-4">
           
           {/* Categories */}

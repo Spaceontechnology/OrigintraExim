@@ -22,13 +22,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
     <div className="bg-white text-[#0F172A]">
       
       {/* Page Hero */}
-      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-[#0A1C3E] text-white py-12 sm:py-20 md:py-28">
         <div className="container-x mx-auto max-w-[1440px] relative">
           <div className="max-w-3xl space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-sky-300">
               About Origintra Exim
             </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-white">
               Built for Global Trade. Driven by Trust<span className="text-[#0070E0]">.</span>
             </h1>
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed pt-2">
@@ -39,16 +39,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
       </section>
 
       {/* Sourcing Ethos & Philosophy */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-white border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-4 sm:space-y-6">
               <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
                 Our Philosophy
               </span>
 
-              <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight">
                 Global Trade Works Best When Quality, Transparency, and Reliability Move Together<span className="text-[#0070E0]">.</span>
               </h2>
 
@@ -100,30 +100,30 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
       </section>
 
       {/* Sourcing Footprint */}
-      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-slate-50 border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
           
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Agricultural Footprint
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               Sourcing From India's Prime Cultivation Zones<span className="text-[#0070E0]">.</span>
             </h2>
-            <p className="text-base text-slate-600 mt-3">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 sm:mt-3">
               We operate across key regional spice ecosystems to ensure batch consistency and genuine single-origin integrity.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center font-bold text-sm">
                 01
               </div>
-              <h3 className="text-xl font-display font-semibold text-[#0F172A]">
+              <h3 className="text-lg sm:text-xl font-display font-semibold text-[#0F172A]">
                 Andhra Pradesh & Telangana
               </h3>
-              <p className="text-sm font-semibold text-[#0070E0]">
+              <p className="text-xs sm:text-sm font-semibold text-[#0070E0]">
                 Commodities: Red Chilli (Teja, Sanam) & Turmeric
               </p>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -131,14 +131,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center font-bold text-sm">
                 02
               </div>
-              <h3 className="text-xl font-display font-semibold text-[#0F172A]">
+              <h3 className="text-lg sm:text-xl font-display font-semibold text-[#0F172A]">
                 Gujarat & Rajasthan
               </h3>
-              <p className="text-sm font-semibold text-[#0070E0]">
+              <p className="text-xs sm:text-sm font-semibold text-[#0070E0]">
                 Commodities: Cumin Seeds & Coriander Seeds
               </p>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -146,14 +146,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0070E0] flex items-center justify-center font-bold text-sm">
                 03
               </div>
-              <h3 className="text-xl font-display font-semibold text-[#0F172A]">
+              <h3 className="text-lg sm:text-xl font-display font-semibold text-[#0F172A]">
                 Tamil Nadu & Southern Belts
               </h3>
-              <p className="text-sm font-semibold text-[#0070E0]">
+              <p className="text-xs sm:text-sm font-semibold text-[#0070E0]">
                 Commodities: Salem Turmeric & Pure Moringa Leaf Powder
               </p>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -166,26 +166,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
       </section>
 
       {/* Gateway Port Infrastructure */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-white border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
           
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Logistics & Gateway Ports
             </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               Seaworthy Container Stuffing & Fast Port Clearances<span className="text-[#0070E0]">.</span>
             </h2>
-            <p className="text-base text-slate-600 mt-3">
+            <p className="text-sm sm:text-base text-slate-600 mt-2 sm:mt-3">
               We dispatch export consignments through India's premier international container ports with verified surveyor inspection and moisture-barrier protection.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {COMPANY_CONFIG.operationalPorts.map((port, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-4"
+                className="p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200 space-y-4"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-[#0070E0] uppercase tracking-wider">
@@ -195,7 +195,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
                     {port.location}
                   </span>
                 </div>
-                <h3 className="text-xl font-display font-semibold text-[#0F172A]">
+                <h3 className="text-lg sm:text-xl font-display font-semibold text-[#0F172A]">
                   {port.name}
                 </h3>
                 <p className="text-xs font-semibold text-slate-700">
@@ -212,17 +212,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
       </section>
 
       {/* Leadership & Executive Team Section */}
-      <section className="py-20 sm:py-28 bg-white border-b border-slate-200">
+      <section className="py-12 sm:py-20 md:py-28 bg-white border-b border-slate-200">
         <div className="container-x mx-auto max-w-[1440px]">
           
-          <div className="max-w-3xl mb-16">
+          <div className="max-w-3xl mb-10 sm:mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0070E0]">
               Leadership & Key People
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-[#0F172A] tracking-tight mt-2">
               The Leadership Behind Origintra Exim<span className="text-[#0070E0]">.</span>
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 mt-2 sm:mt-3 leading-relaxed">
               Seasoned agro-commodity export leaders combining decades of hands-on farmgate mandi procurement, NABL laboratory food compliance, and disciplined maritime logistics.
             </p>
           </div>
@@ -334,9 +334,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
       </section>
 
       {/* CTA Bottom Banner */}
-      <section className="py-20 bg-[#0A1C3E] text-white">
-        <div className="container-x mx-auto max-w-[1440px] text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-display font-semibold text-white tracking-tight">
+      <section className="py-12 sm:py-20 bg-[#0A1C3E] text-white">
+        <div className="container-x mx-auto max-w-[1440px] text-center space-y-4 sm:space-y-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-white tracking-tight">
             Start a Reliable Indian Sourcing Partnership
           </h2>
           <p className="text-base text-slate-300 max-w-xl mx-auto">
